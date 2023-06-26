@@ -25,34 +25,40 @@ class KccApplicationController extends Controller
         $applicant->course = $request->input('course');
         $applicant->YearofGrad = $request->input('YearofGrad');
 
-        $applicant->$request->file('cv');
-        if ($applicant) {
-            $fileName = $applicant->getClientOriginalName();
-            $applicant->storeAs('public', $fileName);
+        // $applicant->$request->file('cv');
+        // if ($applicant) {
+        //     $fileName = $applicant->getClientOriginalName();
+        //     $applicant->storeAs('public', $fileName);
     
-            // Code to handle the uploaded file
-        }
+        //     // Code to handle the uploaded file
+        // }
 
-        $applicant->$request->file('CoverLetter');
-        if ($applicant) {
-            $fileName = $applicant->getClientOriginalName();
-            $applicant->storeAs('public', $fileName);
+        // $applicant->$request->file('CoverLetter');
+        // if ($applicant) {
+        //     $fileName = $applicant->getClientOriginalName();
+        //     $applicant->storeAs('public', $fileName);
     
-            // Code to handle the uploaded file
-        }
+        //     // Code to handle the uploaded file
+        // }
 
-        $applicant->$request->file('GoodConductCert');
-        if ($applicant) {
-            $fileName = $applicant->getClientOriginalName();
-            $applicant->storeAs('public', $fileName);
+        // $applicant->$request->file('GoodConductCert');
+        // if ($applicant) {
+        //     $fileName = $applicant->getClientOriginalName();
+        //     $applicant->storeAs('public', $fileName);
     
-            // Code to handle the uploaded file
-        }
+        //     // Code to handle the uploaded file
+        // }
 
         $applicant->RefFirstName = $request->input('RefFirstName');
         $applicant->RefSecondName = $request->input('RefSecondName');
         $applicant->RefPhoneNumber = $request->input('RefPhoneNumber');
         $applicant->RefRelationship = $request->input('RefRelationship');
         $applicant->message = $request->input('message');
+
+        $applicant->save();
+
+        // $applicant = KccApplication::all();
+
+        return $applicant;
     }
 }

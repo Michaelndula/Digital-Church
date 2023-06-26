@@ -27,9 +27,6 @@ return new class extends Migration
             $table->string('SchoolAddress');
             $table->string('course');
             $table->string('YearofGrad');
-            $table->string('cv')->nullable();
-            $table->string('CoverLetter')->nullable();
-            $table->string('GoodConductCert')->nullable();
             $table->string('RefFirstName');
             $table->string('RefSecondName');
             $table->string('RefPhoneNumber');
@@ -47,3 +44,7 @@ return new class extends Migration
         Schema::dropIfExists('applications');
     }
 };
+
+ // $table->string('cv')->nullable();
+            // $table->string('CoverLetter')->nullable();
+            // $table->string('GoodConductCert')->nullable();
