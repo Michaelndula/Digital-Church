@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\KccApplicationController;
-use App\Models\KccApplication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/applicants', [KccApplicationController::class, 'KccApplication']);
+Route::post('/applicants', [KccApplicationController::class, 'Application']);
 
-Route::get('/getapplicants', [KccApplicationController::class, 'KccApplication']);
+Route::get('/getapplicants', [KccApplicationController::class, 'Application']);
