@@ -39,22 +39,3 @@ $(function(){
         $(this).parent().prev().find('div').text(text);
     })
 })
-
-// Get the reference to the select element
-var selectElement = document.getElementById("country-select");
-
-// Load the JSON file
-fetch("data.json")
-  .then(response => response.json())
-  .then(data => {
-    // Iterate over the JSON data and create an option for each item
-    data.forEach(country => {
-      var option = document.createElement("option");
-      option.value = country.value;
-      option.text = country.name;
-      selectElement.appendChild(option);
-    });
-  })
-  .catch(error => {
-    console.error("Error loading JSON file:", error);
-  });
