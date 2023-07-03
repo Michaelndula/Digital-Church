@@ -27,9 +27,9 @@ return new class extends Migration
             $table->string('YearofGrad')->nullable();
             $table->string('SchoolAddress')->nullable();
             $table->string('course')->nullable();
-            $table->binary('cv')->nullable();
-            $table->binary('CoverLetter')->nullable();
-            $table->binary('GoodConductCert')->nullable();
+            $table->string('cv')->nullable();
+            $table->string('CoverLetter')->nullable();
+            $table->string('GoodConductCert')->nullable();
             $table->string('RefFirstName');
             $table->string('RefSecondName');
             $table->string('RefPhoneNumber');

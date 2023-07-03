@@ -14,7 +14,7 @@ class Application extends Model
     protected $fillable = [
         'FullName', 'email', 'PhoneNumber', 'id_number','KRA_number', 'DateofBirth',  'gender', 'address',
         'county', 'residence', 'country', 'SchoolName', 'SchoolAddress', 'course',
-        'YearofGrad', 'RefFirstName', 'RefSecondName', 'RefPhoneNumber', 'RefRelationship',
+        'YearofGrad', 'cv', 'CoverLetter', 'GoodConductCert', 'RefFirstName', 'RefSecondName', 'RefPhoneNumber', 'RefRelationship',
         'message'
     ];
 }

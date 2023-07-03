@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from 'react-helmet';
+import InfoModal from "./components/Infomodal/Infomodal";
 import ApplicationForm from './components/ApplicationForm/ApplicationForm'
 import { BrowserRouter as Router, Switch, Route, Routes } from 'react-router-dom';
 

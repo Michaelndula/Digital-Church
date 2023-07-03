@@ -9,6 +9,14 @@ class KccApplicationController extends Controller
 {
     function Application (Request $request){
         
+        $fullName = $request->input('FullName');
+
+        $existingApplicant = Application::where('FullName', $fullName)->first();
+
+        if ($existingApplicant) {
+            return response()->json(['message' => 'Applicant already exists'], 409);
+        }
+
         $applicant = new Application;
 
         $applicant->FullName = $request->input('FullName');
@@ -29,19 +37,19 @@ class KccApplicationController extends Controller
         if($request->hasFile('cv')){
             $cv = $request->file('cv');
             $cv = $this->generate_file_name($cv);
-            $applicant->cv= $request->$cv;
+            $applicant->cv = $cv;
         }
 
         if($request->hasFile('CoverLetter')){
             $CoverLetter = $request->file('CoverLetter');
             $CoverLetter = $this->generate_file_name($CoverLetter);
-            $applicant->CoverLetter= $request->$CoverLetter;
+            $applicant->CoverLetter = $CoverLetter;
         }
 
         if($request->hasFile('GoodConductCert')){
             $GoodConductCert = $request->file('GoodConductCert');
             $GoodConductCert = $this->generate_file_name($GoodConductCert);
-            $applicant->GoodConductCert= $request->$GoodConductCert;
+            $applicant->GoodConductCert = $GoodConductCert;
         }
 
 
@@ -60,6 +68,7 @@ class KccApplicationController extends Controller
 
         // $applicant = KccApplication::all();
     }
+
 
     public function generate_file_name($file)
     {
