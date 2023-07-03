@@ -32,13 +32,18 @@ class KccApplicationController extends Controller
         $applicant->SchoolAddress = $request->input('SchoolAddress');
         $applicant->course = $request->input('course');
         $applicant->YearofGrad = $request->input('YearofGrad');
+        
+        // //files
+        // $applicant->cv = $request->file('cv')->store('cv');
        
+
 
         if($request->hasFile('cv')){
             $cv = $request->file('cv');
             $cv = $this->generate_file_name($cv);
             $applicant->cv = $cv;
         }
+        
 
         if($request->hasFile('CoverLetter')){
             $CoverLetter = $request->file('CoverLetter');
@@ -69,11 +74,15 @@ class KccApplicationController extends Controller
         // $applicant = KccApplication::all();
     }
 
+    // function AddFiles(Request $request){
+    //     return $request->file('cv')->store('files');
+    // }
+
 
     public function generate_file_name($file)
     {
         $filename =  $file->getClientOriginalName();
-        $location = 'uploads';
+        $location = 'files';
 
         $file->move($location, $filename);
         $profile = public_path($location . "/" . $filename);
