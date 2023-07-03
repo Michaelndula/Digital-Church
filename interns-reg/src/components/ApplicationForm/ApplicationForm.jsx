@@ -3,56 +3,74 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button } from "react-bootstrap";
 
 function ApplicationForm() {
-  const [formData, setFormData] = useState({
-    FullName: "",
-    email: "",
-    PhoneNumber: "",
-    id_number: "",
-    KRA_number: "",
-    DateofBirth: "",
-    gender: "",
-    county: "",
-    residence: "",
-    SchoolName: "",
-    SchoolAddress: "",
-    course: "",
-    YearofGrad: "",
-    cv: null,
-    CoverLetter: null,
-    GoodConductCert: null,
-    RefFirstName: "",
-    RefSecondName: "",
-    RefPhoneNumber: "",
-    RefRelationship: "",
-    message: "",
-  });
+
+  const [FullName, setFullName]=useState("");
+  const [email, setemail]=useState("");
+  const [PhoneNumber, setPhoneNumber]=useState("");
+  const [id_number, setid_number]=useState("");
+  const [KRA_number, setKRA_number]=useState("");
+  const [DateofBirth, setDateofBirth]=useState("");
+  const [gender, setgender]=useState("");
+  const [county, setcounty]=useState("");
+  const [residence, setresidence]=useState("");
+  const [SchoolName, setSchoolName]=useState("");
+  const [SchoolAddress, setSchoolAddress]=useState("");
+  const [course, setcourse]=useState("");
+  const [YearofGrad, setYearofGrad]=useState("");
+  const [cv, setFile]=useState("");
+  const [CoverLetter, setCoverLetter]=useState("");
+  const [GoodConductCert, setGoodConductCert]=useState("");
+  const [RefFirstName, setRefFirstName]=useState("");
+  const [RefSecondName, setRefSecondName]=useState("");
+  const [RefPhoneNumber, setRefPhoneNumber]=useState("");
+  const [RefRelationship, setRefRelationship]=useState("");
+  const [message, setmessage]=useState("");
+
+
   const [isApplicationSuccessful, setApplicationSuccess] = useState(false);
   const [error, setError] = useState("");
 
   const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
+ 
   const handleClose = () => {
-    window.location.reload(); // Reload the page
+    window.location.reload();
   };
   const handleShow = () => setShow(true);
 
-  const handleInput = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
-
   async function handleSubmit(event) {
+    
+    const formData = new FormData();
+
+    formData.append('FullName', FullName);
+    formData.append('email', email);
+    formData.append('PhoneNumber', PhoneNumber);
+    formData.append('id_number', id_number);
+    formData.append('KRA_number', KRA_number);
+    formData.append('DateofBirth', DateofBirth);
+    formData.append('gender', gender);
+    formData.append('county', county);
+    formData.append('residence', residence);
+    formData.append('SchoolName', SchoolName);
+    formData.append('SchoolAddress', SchoolAddress);
+    formData.append('course', course);
+    formData.append('YearofGrad', YearofGrad);
+    formData.append('cv', cv);
+    formData.append('CoverLetter', CoverLetter);
+    formData.append('GoodConductCert', GoodConductCert);
+    formData.append('RefFirstName', RefFirstName);
+    formData.append('RefSecondName', RefSecondName);
+    formData.append('RefPhoneNumber', RefPhoneNumber);
+    formData.append('RefRelationship', RefRelationship);
+    formData.append('message', message);
+
     const requestOptions = {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify(formData),
+      body: formData
     };
 
     event.preventDefault();
 
-    console.log(formData);
+    // console.log(formData);
 
     await fetch("http://localhost:8000/api/applicants", requestOptions)
       .then((response) => {
@@ -60,7 +78,9 @@ function ApplicationForm() {
         if (response.ok) {
           console.log("response", response);
           return response.json();
-        } else {
+        } else if (response.status === 409) {
+          throw new Error('Applicant already exists');
+        }else {
           throw new Error(response.statusText);
         }
       })
@@ -68,7 +88,6 @@ function ApplicationForm() {
         setApplicationSuccess(true);
       })
       .catch((error) => {
-        // Handle any errors
         setApplicationSuccess(false);
         setError(error.message);
         console.error(error);
@@ -80,6 +99,9 @@ function ApplicationForm() {
   return (
     <>
       <section className="container">
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '20vh', }}>
+          <img src="images/kcclogo.png"/>
+        </div>
         <header>Application Form</header>
         <form onSubmit={handleSubmit} className="form">
           <div className="input-box">
@@ -88,7 +110,7 @@ function ApplicationForm() {
               type="text"
               placeholder="Enter full name"
               name="FullName"
-              onChange={handleInput}
+              onChange={(e)=>setFullName(e.target.value)}
               required
             />
           </div>
@@ -99,7 +121,7 @@ function ApplicationForm() {
               type="text"
               placeholder="Enter email address"
               name="email"
-              onChange={handleInput}
+              onChange={(e)=>setemail(e.target.value)}
               required
             />
           </div>
@@ -111,7 +133,7 @@ function ApplicationForm() {
                 type="text"
                 placeholder="Enter phone number"
                 name="PhoneNumber"
-                onChange={handleInput}
+                onChange={(e)=>setPhoneNumber(e.target.value)}
                 required
               />
             </div>
@@ -121,7 +143,7 @@ function ApplicationForm() {
                 type="date"
                 placeholder="Enter birth date"
                 name="DateofBirth"
-                onChange={handleInput}
+                onChange={(e)=>setDateofBirth(e.target.value)}
                 required
               />
             </div>
@@ -133,7 +155,7 @@ function ApplicationForm() {
                 type="text"
                 placeholder="Enter ID number"
                 name="id_number"
-                onChange={handleInput}
+                onChange={(e)=>setid_number(e.target.value)}
                 required
               />
             </div>
@@ -143,7 +165,7 @@ function ApplicationForm() {
                 type="text"
                 placeholder="Enter kra number"
                 name="KRA_number"
-                onChange={handleInput}
+                onChange={(e)=>setKRA_number(e.target.value)}
                 required
               />
             </div>
@@ -156,7 +178,7 @@ function ApplicationForm() {
                   className="form-check-input"
                   type="radio"
                   name="gender"
-                  onChange={handleInput}
+                  onChange={(e)=>setgender(e.target.value)}
                   id="inlineRadio1"
                   value="Male"
                 />
@@ -169,7 +191,7 @@ function ApplicationForm() {
                   className="form-check-input"
                   type="radio"
                   name="gender"
-                  onChange={handleInput}
+                  onChange={(e)=>setgender(e.target.value)}
                   id="inlineRadio2"
                   value="Female"
                 />
@@ -186,7 +208,7 @@ function ApplicationForm() {
                 type="text"
                 placeholder="County"
                 name="county"
-                onChange={handleInput}
+                onChange={(e)=>setcounty(e.target.value)}
                 required
               />
               {/* <div className="select-box">
@@ -199,7 +221,7 @@ function ApplicationForm() {
                 type="text"
                 placeholder="Residency/Estate"
                 name="residence"
-                onChange={handleInput}
+                onChange={(e)=>setresidence(e.target.value)}
                 required
               />
             </div>
@@ -213,7 +235,7 @@ function ApplicationForm() {
                 type="text"
                 placeholder="School Name"
                 name="SchoolName"
-                onChange={handleInput}
+                onChange={(e)=>setSchoolName(e.target.value)}
               />
               <div className="select-box">
                 <select
@@ -222,7 +244,7 @@ function ApplicationForm() {
                   placeholder="Year"
                   className="form-control"
                   name="YearofGrad"
-                  onChange={handleInput}
+                  onChange={(e)=>setYearofGrad(e.target.value)}
                 >
                   <option hidden>Year of Graduation</option>
                 </select>
@@ -233,13 +255,13 @@ function ApplicationForm() {
                 type="text"
                 placeholder="School Address"
                 name="SchoolAddress"
-                onChange={handleInput}
+                onChange={(e)=>setSchoolAddress(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Course"
                 name="course"
-                onChange={handleInput}
+                onChange={(e)=>setcourse(e.target.value)}
               />
             </div>
           </div>
@@ -260,7 +282,7 @@ function ApplicationForm() {
                   id="formFileLg"
                   type="file"
                   name="cv"
-                  onChange={handleInput}
+                  onChange={(e)=>setFile(e.target.files[0])}
                 />
               </div>
               <div>
@@ -272,7 +294,8 @@ function ApplicationForm() {
                   id="formFileLg"
                   type="file"
                   name="CoverLetter"
-                  onChange={handleInput}
+                  onChange={(e)=>setCoverLetter(e.target.files[0])}
+                  // onChange={handleInput}
                 />
               </div>
             </div>
@@ -288,7 +311,7 @@ function ApplicationForm() {
                   id="formFileLg"
                   type="file"
                   name="GoodConductCert"
-                  onChange={handleInput}
+                  onChange={(e)=>setGoodConductCert(e.target.files[0])}
                 />
               </div>
               <div></div>
@@ -305,7 +328,7 @@ function ApplicationForm() {
                   type="text"
                   placeholder="First Name"
                   name="RefFirstName"
-                  onChange={handleInput}
+                  onChange={(e)=>setRefFirstName(e.target.value)}
                   required
                 />
               </div>
@@ -317,7 +340,7 @@ function ApplicationForm() {
                   type="text"
                   placeholder="Last Name"
                   name="RefSecondName"
-                  onChange={handleInput}
+                  onChange={(e)=>setRefSecondName(e.target.value)}
                   required
                 />
               </div>
@@ -327,14 +350,14 @@ function ApplicationForm() {
                 type="text"
                 placeholder="Phone Number"
                 name="RefPhoneNumber"
-                onChange={handleInput}
+                onChange={(e)=>setRefPhoneNumber(e.target.value)}
                 required
               />
               <input
                 type="text"
                 placeholder="Relationship"
                 name="RefRelationship"
-                onChange={handleInput}
+                onChange={(e)=>setRefRelationship(e.target.value)}
                 required
               />
             </div>
@@ -350,7 +373,7 @@ function ApplicationForm() {
                   id="exampleFormControlTextarea1"
                   rows="3"
                   name="message"
-                  onChange={handleInput}
+                  onChange={(e)=>setmessage(e.target.value)}
                 ></textarea>
               </div>
             </div>
@@ -365,7 +388,7 @@ function ApplicationForm() {
           </Modal.Header>
           {isApplicationSuccessful ? (
             <Modal.Body>
-              <p>Thank you {formData.FullName}! Your application has been received.</p>
+              <p style={{ color: 'green' }}>Thank you {FormData.FullName}! Your application has been received.</p>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                   Close
@@ -381,7 +404,7 @@ function ApplicationForm() {
             </Modal.Body>
           ) : (
             <Modal.Body>
-              <p>Sorry, there was an error submitting your application. Please try again.</p>
+              <p style={{ color: 'red' }}>Sorry, there was an error submitting your application. Please try again.</p>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                   Close
@@ -397,7 +420,7 @@ function ApplicationForm() {
           <Modal.Title>Error Submitting your Application</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>{error}</p>
+          <p style={{ color: 'red' }}>{error}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setError("")}>
