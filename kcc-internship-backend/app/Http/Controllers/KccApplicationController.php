@@ -32,27 +32,37 @@ class KccApplicationController extends Controller
         $applicant->SchoolAddress = $request->input('SchoolAddress');
         $applicant->course = $request->input('course');
         $applicant->YearofGrad = $request->input('YearofGrad');
-        
-        // //files
-        // $applicant->cv = $request->file('cv')->store('cv');
        
-
-
         if($request->hasFile('cv')){
+            $allowedExtensions = ['pdf', 'doc', 'docx'];
             $cv = $request->file('cv');
+            $extension = $cv->getClientOriginalExtension();
+            if (!in_array($extension, $allowedExtensions)) {
+                return response()->json(['message' => 'Only PDF or Word documents are allowed.'], 406);
+            }
             $cv = $this->generate_file_name($cv);
             $applicant->cv = $cv;
         }
         
 
         if($request->hasFile('CoverLetter')){
+            $allowedExtensions = ['pdf', 'doc', 'docx'];
             $CoverLetter = $request->file('CoverLetter');
+            $extension = $CoverLetter->getClientOriginalExtension();
+            if (!in_array($extension, $allowedExtensions)) {
+                return response()->json(['message' => 'Only PDF or Word documents are allowed.'], 406);
+            }
             $CoverLetter = $this->generate_file_name($CoverLetter);
             $applicant->CoverLetter = $CoverLetter;
         }
 
         if($request->hasFile('GoodConductCert')){
+            $allowedExtensions = ['pdf', 'doc', 'docx'];
             $GoodConductCert = $request->file('GoodConductCert');
+            $extension = $GoodConductCert->getClientOriginalExtension();
+            if (!in_array($extension, $allowedExtensions)) {
+                return response()->json(['message' => 'Only PDF or Word documents are allowed.'], 406);
+            }
             $GoodConductCert = $this->generate_file_name($GoodConductCert);
             $applicant->GoodConductCert = $GoodConductCert;
         }
@@ -73,10 +83,6 @@ class KccApplicationController extends Controller
 
         // $applicant = KccApplication::all();
     }
-
-    // function AddFiles(Request $request){
-    //     return $request->file('cv')->store('files');
-    // }
 
 
     public function generate_file_name($file)

@@ -12,6 +12,7 @@ function ApplicationForm() {
   const [DateofBirth, setDateofBirth]=useState("");
   const [gender, setgender]=useState("");
   const [county, setcounty]=useState("");
+  const [countyList, setCountyList] = useState([]);
   const [residence, setresidence]=useState("");
   const [SchoolName, setSchoolName]=useState("");
   const [SchoolAddress, setSchoolAddress]=useState("");
@@ -26,6 +27,14 @@ function ApplicationForm() {
   const [RefRelationship, setRefRelationship]=useState("");
   const [message, setmessage]=useState("");
 
+
+  useEffect(() => {
+    // Fetch the counties.json file
+    fetch('counties.json')
+      .then(response => response.json())
+      .then(data => setCountyList(data))
+      .catch(error => console.error('Error fetching counties:', error));
+  }, []);
 
   const [isApplicationSuccessful, setApplicationSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -80,6 +89,8 @@ function ApplicationForm() {
           return response.json();
         } else if (response.status === 409) {
           throw new Error('Applicant already exists');
+        }else if (response.status === 406) {
+          throw new Error('Only PDF or Word documents are allowed.');
         }else {
           throw new Error(response.statusText);
         }
@@ -144,6 +155,7 @@ function ApplicationForm() {
                 placeholder="Enter birth date"
                 name="DateofBirth"
                 onChange={(e)=>setDateofBirth(e.target.value)}
+                max={new Date().toISOString().split('T')[0]}
                 required
               />
             </div>
@@ -209,8 +221,14 @@ function ApplicationForm() {
                 placeholder="County"
                 name="county"
                 onChange={(e)=>setcounty(e.target.value)}
+                list="countyList"
                 required
               />
+              <datalist id="countyList">
+                {countyList.map((county, index) => (
+                  <option key={index} value={county} />
+                ))}
+              </datalist>
               {/* <div className="select-box">
                 <select>
                   <option>Select County</option>
