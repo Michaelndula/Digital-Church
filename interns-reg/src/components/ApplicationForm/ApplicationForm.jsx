@@ -115,6 +115,7 @@ function ApplicationForm() {
         </div>
         <header>Application Form</header>
         <form onSubmit={handleSubmit} className="form">
+          <h3>Section One</h3>
           <div className="input-box">
             <label>Full Name</label>
             <input
@@ -125,7 +126,7 @@ function ApplicationForm() {
               required
             />
           </div>
-
+          <div className="column">
           <div className="input-box">
             <label>Email Address</label>
             <input
@@ -136,8 +137,6 @@ function ApplicationForm() {
               required
             />
           </div>
-
-          <div className="column">
             <div className="input-box">
               <label>Phone Number</label>
               <input
@@ -148,7 +147,9 @@ function ApplicationForm() {
                 required
               />
             </div>
-            <div className="input-box">
+          </div>
+          <div className="column">
+          <div className="input-box">
               <label>Birth Date</label>
               <input
                 type="date"
@@ -159,31 +160,8 @@ function ApplicationForm() {
                 required
               />
             </div>
-          </div>
-          <div className="column">
             <div className="input-box">
-              <label>ID Number</label>
-              <input
-                type="text"
-                placeholder="Enter ID number"
-                name="id_number"
-                onChange={(e)=>setid_number(e.target.value)}
-                required
-              />
-            </div>
-            <div className="input-box">
-              <label>KRA Number</label>
-              <input
-                type="text"
-                placeholder="Enter kra number"
-                name="KRA_number"
-                onChange={(e)=>setKRA_number(e.target.value)}
-                required
-              />
-            </div>
-          </div>
-          <div className="gender-box">
-            <h3>Gender</h3>
+            <label>Gender</label>
             <div className="gender-option">
               <div className="form-check form-check-inline">
                 <input
@@ -211,6 +189,29 @@ function ApplicationForm() {
                   Female
                 </label>
               </div>
+            </div>
+          </div>
+          </div>
+          <div className="column">
+            <div className="input-box">
+              <label>ID Number</label>
+              <input
+                type="text"
+                placeholder="Enter ID number"
+                name="id_number"
+                onChange={(e)=>setid_number(e.target.value)}
+                required
+              />
+            </div>
+            <div className="input-box">
+              <label>KRA Number</label>
+              <input
+                type="text"
+                placeholder="Enter kra number"
+                name="KRA_number"
+                onChange={(e)=>setKRA_number(e.target.value)}
+                required
+              />
             </div>
           </div>
           <div className="input-box address">
@@ -244,16 +245,483 @@ function ApplicationForm() {
               />
             </div>
           </div>
-          <br></br>
-          <br></br>
+          <div className="column">
+          <div className="input-box">
+                <label>
+                  Current Church
+                </label>
+                
+                <input
+                type="text"
+                name="CurrentChurch"
+                onChange={(e)=>setmessage(e.target.value)}
+                required
+              />
+              </div>
+                {/* <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="1"
+                  name="message"
+                  onChange={(e)=>setmessage(e.target.value)}
+                ></textarea> */}
+                <div className="input-box">
+                  <label>Relationship Status</label>     
+              <div className="form-check">
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="gender"
+                  onChange={(e)=>setgender(e.target.value)}
+                  id="inlineRadio1"
+                  value="Male"
+                />
+                <label className="form-check-label">
+                  Married
+                </label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="gender"
+                  onChange={(e)=>setgender(e.target.value)}
+                  id="inlineRadio1"
+                  value="Male"
+                />
+                <label className="form-check-label">
+                  Enganged
+                </label>
+              </div>
+              </div>
+          </div>
+          </div>
           <div className="input-box address">
-            <label>Education</label>
+              <div className="form-group">
+                <label>
+                  Hobbies
+                </label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="2"
+                  name="message"
+                  onChange={(e)=>setmessage(e.target.value)}
+                ></textarea>
+              </div>
+              </div>
+          <br></br>
+          <br></br>
+          <h3>Section Two</h3>
+          <div className="input-box address">
+              <div className="form-group">
+                <label>
+                  Kindly share with us how you heard about SALT? 
+                </label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="2"
+                  name="message"
+                  onChange={(e)=>setmessage(e.target.value)}
+                ></textarea>
+              </div>
+          </div>
+          <div className="input-box address">
+              <div className="form-group">
+                <label>
+                  Why are you interested in serving at K.C.C?
+                </label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  name="message"
+                  onChange={(e)=>setmessage(e.target.value)}
+                ></textarea>
+              </div>
+          </div>
+          <div className="input-box address">
+              <div className="form-group">
+                <label>
+                  What are some expectations you are having as you come into SALT?
+                </label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  name="message"
+                  onChange={(e)=>setmessage(e.target.value)}
+                ></textarea>
+              </div>
+          </div>
+          <div className="input-box address">
+              <div className="form-group">
+                <label>
+                  What are your strengths?
+                </label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  name="message"
+                  onChange={(e)=>setmessage(e.target.value)}
+                ></textarea>
+              </div>
+          </div>
+          <div className="input-box address">
+              <div className="form-group">
+                <label>
+                  What are your areas of weakness?
+                </label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  name="message"
+                  onChange={(e)=>setmessage(e.target.value)}
+                ></textarea>
+              </div>
+          </div>
+          <div className="input-box address">
+              <div className="form-group">
+                <label>
+                  SALT will involve serving in a number of ministries in KCC. What’s your take on this?
+                </label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  name="message"
+                  onChange={(e)=>setmessage(e.target.value)}
+                ></textarea>
+              </div>
+          </div>
+          <div className="input-box address">
+              <div className="form-group">
+                <label>
+                  At the end of your internship, what kind of impact are you hoping to have?
+                </label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  name="message"
+                  onChange={(e)=>setmessage(e.target.value)}
+                ></textarea>
+              </div>
+          </div>
+          <div className="input-box address">
+              <div className="form-group">
+                <label>
+                  Have you ever been convicted of any crime other than a minor traffic violation? If so which ones?
+                </label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  name="message"
+                  onChange={(e)=>setmessage(e.target.value)}
+                ></textarea>
+              </div>
+          </div>
+          <br></br>
+          <br></br>
+          <h3>Section Three</h3>
+          <div className="input-box address">
+              <div className="form-group">
+                <label>
+                  Please share with us your testimony of faith.
+                </label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  name="message"
+                  onChange={(e)=>setmessage(e.target.value)}
+                ></textarea>
+              </div>
+          </div>
+          <div className="input-box address">
+              <div className="form-group">
+                <label>
+                Recognizing that by potentially entering into ministry you are being held to a standard of living a Christian life,
+                is there anything you'd like to have a conversation about with us before? If so, please elaborate below.
+                </label>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                  name="message"
+                  onChange={(e)=>setmessage(e.target.value)}
+                ></textarea>
+              </div>
+          </div>
+          <div className="input-box address">
+            <label>
+              On a scale of 1 – 5 (1 being lowest and 5 being highest) 
+              how are you doing in the following spiritual disciplines:
+            </label>
+            <div className="column">
+              <label><b>Prayer</b></label>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="1"/>
+            <label>1</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="2"/>
+            <label>2</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="3"/>
+            <label>3</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="4"/>
+            <label>4</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="5"/>
+            <label>5</label>
+            </div>
+              <label><b>Fasting</b></label>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="1"/>
+            <label>1</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="2"/>
+            <label>2</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="3"/>
+            <label>3</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="4"/>
+            <label>4</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="5"/>
+            <label>5</label>
+            </div>
+            </div>
+            <div className="column">
+              <label><b>Witnessing</b></label>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="1"/>
+            <label>1</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="2"/>
+            <label>2</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="3"/>
+            <label>3</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="4"/>
+            <label>4</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="5"/>
+            <label>5</label>
+            </div>
+              <label><b>Reading your Bible</b></label>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="1"/>
+            <label>1</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="2"/>
+            <label>2</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="3"/>
+            <label>3</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="4"/>
+            <label>4</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="5"/>
+            <label>5</label>
+            </div>
+            </div>
+            <div className="column">
+            <label><b>Caring For the Vulnerable</b></label>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="1"/>
+            <label>1</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="2"/>
+            <label>2</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="3"/>
+            <label>3</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="4"/>
+            <label>4</label>
+            </div>
+            <div class="form-check form-check-inline">
+            <input 
+                class="form-check-input" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                value="5"/>
+            <label>5</label>
+            </div>
+            </div>
+          </div>
+          <div className="input-box address">
+            <label><b>Education</b></label>
             <div className="column">
               <input
                 type="text"
                 placeholder="School Name"
                 name="SchoolName"
                 onChange={(e)=>setSchoolName(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Course"
+                name="course"
+                onChange={(e)=>setcourse(e.target.value)}
+              />
+            </div>
+            <div className="column">
+              <input
+                type="text"
+                placeholder="School Address"
+                name="SchoolAddress"
+                onChange={(e)=>setSchoolAddress(e.target.value)}
               />
               <div className="select-box">
                 <select
@@ -268,26 +736,11 @@ function ApplicationForm() {
                 </select>
               </div>
             </div>
-            <div className="column">
-              <input
-                type="text"
-                placeholder="School Address"
-                name="SchoolAddress"
-                onChange={(e)=>setSchoolAddress(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Course"
-                name="course"
-                onChange={(e)=>setcourse(e.target.value)}
-              />
-            </div>
           </div>
-
           <br></br>
           <br></br>
           <div className="input-box address">
-            <label>Documents</label>
+            <label><b>Documents</b></label>
             <br></br>
             <br></br>
             <div className="column">
@@ -318,11 +771,10 @@ function ApplicationForm() {
               </div>
             </div>
             <br></br>
-            <br></br>
             <div className="column">
               <div>
                 <label className="form-label">
-                  Upload Certicate of good conduct
+                  Upload Certicate of Good Conduct
                 </label>
                 <input
                   className="form-control form-control-lg"
@@ -332,14 +784,49 @@ function ApplicationForm() {
                   onChange={(e)=>setGoodConductCert(e.target.files[0])}
                 />
               </div>
-              <div></div>
+              <div>
+            <label class="form-label">
+              Upload Passport-Sized Photos
+            </label>
+            <input 
+              class="form-control form-control-lg" 
+              type="file" 
+              id="formFileMultiple" multiple
+              />
+              </div>
             </div>
           </div>
+            <br></br>
+            <div className="column">
+              <div>
+                <label className="form-label">
+                  Copy of National ID (Front)
+                </label>
+                <input
+                  className="form-control form-control-lg"
+                  id="formFileLg"
+                  type="file"
+                  name="GoodConductCert"
+                  onChange={(e)=>setGoodConductCert(e.target.files[0])}
+                />
+              </div>
+              <div>
+            <label class="form-label">
+              Copy of National ID (Back)
+            </label>
+            <input 
+              class="form-control form-control-lg" 
+              type="file" 
+              id="formFileMultiple" 
+              />
+              </div>
+            </div>
+          
 
           <br></br>
           <br></br>
           <div className="input-box address">
-            <label>Referee</label>
+            <label><b>Referee</b></label>
             <div className="column">
               <div>
                 <input
@@ -381,19 +868,45 @@ function ApplicationForm() {
             </div>
           </div>
           <div className="input-box address">
+            <label><b>Referee</b></label>
             <div className="column">
-              <div className="form-group">
-                <label>
-                  Additional Message
-                </label>
-                <textarea
-                  className="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows="3"
-                  name="message"
-                  onChange={(e)=>setmessage(e.target.value)}
-                ></textarea>
+              <div>
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  name="RefFirstName"
+                  onChange={(e)=>setRefFirstName(e.target.value)}
+                  required
+                />
               </div>
+              <div>
+                <label className="form-label">
+                  {" "}
+                </label>
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  name="RefSecondName"
+                  onChange={(e)=>setRefSecondName(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+            <div className="column">
+              <input
+                type="text"
+                placeholder="Phone Number"
+                name="RefPhoneNumber"
+                onChange={(e)=>setRefPhoneNumber(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                placeholder="Relationship"
+                name="RefRelationship"
+                onChange={(e)=>setRefRelationship(e.target.value)}
+                required
+              />
             </div>
           </div>
           <button type="submit" onClick={handleShow}>
