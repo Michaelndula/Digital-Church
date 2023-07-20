@@ -17,24 +17,53 @@ return new class extends Migration
             $table->string('FullName');
             $table->string('email');
             $table->string('PhoneNumber');
-            $table->string('id_number');
-            $table->string('KRA_number');
             $table->string('DateofBirth');
             $table->string('gender');
+            $table->string('id_number');
+            $table->string('KRA_number');           
             $table->string('county');
             $table->string('residence');
+            $table->string('currentChurch');
+            $table->string('relationshipStatus');
+            $table->string('Hobbies');
+
+            $table->string('sourceofReferral');
+            $table->string('reasonforApplication');
+            $table->string('Expectations');
+            $table->string('Strenths');
+            $table->string('Weakness');
+            $table->string('multiRole');
+            $table->string('internshipGoals');
+            $table->string('criminalHistory');
+
+            $table->string('Testimony');
+            $table->string('additionalMessage');
+            $table->string('prayerForm');
+            $table->string('fastingForm');
+            $table->string('witnessingForm');
+            $table->string('bibleReadingForm');
+            $table->string('charityForm');
+            
             $table->string('SchoolName')->nullable();
-            $table->string('YearofGrad')->nullable();
-            $table->string('SchoolAddress')->nullable();
             $table->string('course')->nullable();
+            $table->string('SchoolAddress')->nullable();
+            $table->string('YearofGrad')->nullable();
+
             $table->string('cv')->nullable();
             $table->string('CoverLetter')->nullable();
             $table->string('GoodConductCert')->nullable();
-            $table->string('RefFirstName');
-            $table->string('RefSecondName');
-            $table->string('RefPhoneNumber');
-            $table->string('RefRelationship');
-            $table->string('message');
+            $table->string('passportPhoto')->nullable();
+            $table->string('ID_front')->nullable();
+            $table->string('ID_back')->nullable();
+
+            $table->string('PersonalRefFirstName');
+            $table->string('PersonalRefSecondName');
+            $table->string('PersonalRefPhoneNumber');
+            $table->string('PersonalRefRelationship');
+            $table->string('MinistryRefFirstName');
+            $table->string('MinistryRefSecondName');
+            $table->string('MinistryRefPhoneNumber');
+            $table->string('MinistryRefRelationship');
             $table->timestamps();
         });
     }
