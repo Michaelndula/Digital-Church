@@ -12,8 +12,14 @@ class Application extends Model
     protected $table = "applications";
 
     protected $fillable = [
-        'FullName', 'email', 'PhoneNumber', 'id_number','KRA_number', 'DateofBirth',  'gender', 'address',
-        'county', 'residence', 'country', 'cv', 'CoverLetter', 'GoodConductCert', 'RefFirstName', 
-        'RefSecondName', 'RefPhoneNumber', 'RefRelationship',
+        'FullName', 'email', 'PhoneNumber', 'DateofBirth', 'gender', 'id_number', 'KRA_number',
+        'residence', 'currentChurch', 'relationshipStatus', 'Hobbies',
+        'sourceofReferral', 'reasonforApplication', 'Expectations', 'Strengths', 
+        'Weakness', 'multiRole', 'internshipGoals', 'criminalHistory',
+        'Testimony', 'additionalMessage', 'prayerForm', 'fastingForm', 'witnessingForm', 
+        'bibleReadingForm', 'charityForm', 
+        'cv', 'CoverLetter', 'GoodConductCert', 'passportPhoto', 'ID_front', 'ID_back',
+        'PersonalRefFirstName', 'PersonalRefSecondName', 'PersonalRefPhoneNumber', 'PersonalRefRelationship',
+        'MinistryRefFirstName', 'MinistryRefSecondName', 'MinistryRefPhoneNumber', 'MinistryRefRelationship'
     ];
 }

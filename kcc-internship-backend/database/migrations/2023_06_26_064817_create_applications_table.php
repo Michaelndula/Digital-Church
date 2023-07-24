@@ -20,8 +20,7 @@ return new class extends Migration
             $table->string('DateofBirth');
             $table->string('gender');
             $table->string('id_number');
-            $table->string('KRA_number');           
-            $table->string('county');
+            $table->string('KRA_number');  
             $table->string('residence');
             $table->string('currentChurch');
             $table->string('relationshipStatus');
@@ -43,16 +42,11 @@ return new class extends Migration
             $table->string('witnessingForm');
             $table->string('bibleReadingForm');
             $table->string('charityForm');
-            
-            $table->string('SchoolName')->nullable();
-            $table->string('course')->nullable();
-            $table->string('SchoolAddress')->nullable();
-            $table->string('YearofGrad')->nullable();
 
             $table->string('cv');
-            $table->string('CoverLetter')->nullable();
+            $table->string('CoverLetter');
             $table->string('GoodConductCert');
-            $table->string('passportPhoto')->nullable();
+            $table->string('passportPhoto');
             $table->string('ID_front');
             $table->string('ID_back');
 
