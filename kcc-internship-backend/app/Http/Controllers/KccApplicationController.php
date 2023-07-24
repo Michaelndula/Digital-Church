@@ -26,7 +26,6 @@ class KccApplicationController extends Controller
         $applicant->gender = $request->input('gender');
         $applicant->id_number = $request->input('id_number');
         $applicant->KRA_number = $request->input('KRA_number');
-        $applicant->county = $request->input('county');
         $applicant->residence = $request->input('residence');
         $applicant->currentChurch = $request->input('currentChurch');
         $applicant->relationshipStatus = $request->input('relationshipStatus');
@@ -48,11 +47,6 @@ class KccApplicationController extends Controller
         $applicant->witnessingForm = $request->input('witnessingForm');
         $applicant->bibleReadingForm = $request->input('bibleReadingForm');
         $applicant->charityForm = $request->input('charityForm');
-
-        $applicant->SchoolName = $request->input('SchoolName');
-        $applicant->course = $request->input('course');
-        $applicant->SchoolAddress = $request->input('SchoolAddress');
-        $applicant->YearofGrad = $request->input('YearofGrad');
        
         if($request->hasFile('cv')){
             $allowedExtensions = ['pdf', 'doc', 'docx'];
