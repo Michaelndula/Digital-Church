@@ -48,15 +48,20 @@ function ApplicationForm() {
   const [MinistryRefPhoneNumber, setMinistryRefPhoneNumber] = useState("");
   const [MinistryRefRelationship, setMinistryRefRelationship] = useState("");
 
-  const [isApplicationSuccessful, setApplicationSuccess] = useState(false);
-  const [error, setError] = useState("");
+    const [isApplicationSuccessful, setApplicationSuccess] = useState(false);
+    const [error, setError] = useState("");
 
-  const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
 
-  const handleClose = () => {
-    window.location.reload();
-  };
-  const handleShow = () => setShow(true);
+    const handleClose = () => {
+      setShow(false);
+      if (isApplicationSuccessful) {
+        window.location.reload();
+      } else {
+        
+      }
+    };
+    const handleShow = () => setShow(true);
 
   async function handleSubmit(event) {
     const formData = new FormData();
@@ -104,16 +109,20 @@ function ApplicationForm() {
     formData.append("MinistryRefPhoneNumber", MinistryRefPhoneNumber);
     formData.append("MinistryRefRelationship", MinistryRefRelationship);
 
-    const requestOptions = {
-      method: "POST",
-      body: formData,
-    };
+    const requestOptions={
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+    },
+
+      body: JSON.stringify(formData),
+    }
 
     event.preventDefault();
 
     // console.log(formData);
 
-    await fetch("http://127.0.0.1:8000/api/applicants", requestOptions)
+    await fetch("http://localhost:8000/api/applicants", requestOptions)
       .then((response) => {
         // Handle the response from the server
         if (response.ok) {
@@ -443,9 +452,9 @@ function ApplicationForm() {
               <label style={{marginRight :"2%"}}>
                 <b>Prayer</b>
               </label>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
@@ -454,9 +463,9 @@ function ApplicationForm() {
                 />
                 <label>1</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
@@ -465,9 +474,9 @@ function ApplicationForm() {
                 />
                 <label>2</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
@@ -476,9 +485,9 @@ function ApplicationForm() {
                 />
                 <label>3</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
@@ -487,9 +496,9 @@ function ApplicationForm() {
                 />
                 <label>4</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
@@ -503,9 +512,9 @@ function ApplicationForm() {
             <label style={{marginRight :"2%"}}>
                 <b>Fasting</b>
               </label>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
@@ -514,9 +523,9 @@ function ApplicationForm() {
                 />
                 <label>1</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
@@ -525,9 +534,9 @@ function ApplicationForm() {
                 />
                 <label>2</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
@@ -536,9 +545,9 @@ function ApplicationForm() {
                 />
                 <label>3</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
@@ -547,9 +556,9 @@ function ApplicationForm() {
                 />
                 <label>4</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
@@ -565,9 +574,9 @@ function ApplicationForm() {
               <label style={{marginRight :"2%"}}>
                 <b>Witnessing</b>
               </label>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
@@ -576,9 +585,9 @@ function ApplicationForm() {
                 />
                 <label>1</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
@@ -587,9 +596,9 @@ function ApplicationForm() {
                 />
                 <label>2</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
@@ -598,9 +607,9 @@ function ApplicationForm() {
                 />
                 <label>3</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
@@ -609,9 +618,9 @@ function ApplicationForm() {
                 />
                 <label>4</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
@@ -625,9 +634,9 @@ function ApplicationForm() {
               <label style={{marginRight :"2%"}}>
                 <b>Reading your Bible</b>
               </label>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
@@ -636,9 +645,9 @@ function ApplicationForm() {
                 />
                 <label>1</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
@@ -647,9 +656,9 @@ function ApplicationForm() {
                 />
                 <label>2</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
@@ -658,9 +667,9 @@ function ApplicationForm() {
                 />
                 <label>3</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
@@ -669,9 +678,9 @@ function ApplicationForm() {
                 />
                 <label>4</label>
               </div>
-              <div class="form-check form-check-inline">
+              <div className="form-check form-check-inline">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
@@ -689,9 +698,9 @@ function ApplicationForm() {
                 </label>
               <div className="col-md-8">
                
-                <div class="form-check form-check-inline">
+                <div className="form-check form-check-inline">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
@@ -700,9 +709,9 @@ function ApplicationForm() {
                   />
                   <label>1</label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div className="form-check form-check-inline">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
@@ -711,9 +720,9 @@ function ApplicationForm() {
                   />
                   <label>2</label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div className="form-check form-check-inline">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
@@ -722,9 +731,9 @@ function ApplicationForm() {
                   />
                   <label>3</label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div className="form-check form-check-inline">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
@@ -733,9 +742,9 @@ function ApplicationForm() {
                   />
                   <label>4</label>
                 </div>
-                <div class="form-check form-check-inline">
+                <div className="form-check form-check-inline">
                   <input
-                    class="form-check-input"
+                    className="form-check-input"
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
@@ -797,9 +806,9 @@ function ApplicationForm() {
                 />
               </div>
               <div>
-                <label class="form-label">Upload Passport-Sized Photos</label>
+                <label className="form-label">Upload Passport-Sized Photos</label>
                 <input
-                  class="form-control form-control-lg"
+                  className="form-control form-control-lg"
                   type="file"
                   id="formFileMultiple"
                   name="passportPhoto"
@@ -822,9 +831,9 @@ function ApplicationForm() {
               />
             </div>
             <div>
-              <label class="form-label">Copy of National ID (Back)</label>
+              <label className="form-label">Copy of National ID (Back)</label>
               <input
-                class="form-control form-control-lg"
+                className="form-control form-control-lg"
                 type="file"
                 id="formFileLg"
                 name="ID_back"
@@ -925,43 +934,42 @@ function ApplicationForm() {
             Submit
           </button>
         </form>
-        <Modal show={show} onHide={handleClose} centered>
-          <Modal.Header closeButton>
-            <Modal.Title>Application Status</Modal.Title>
-          </Modal.Header>
-          {isApplicationSuccessful ? (
-            <Modal.Body>
-              <p style={{ color: "green" }}>
-                Thank you {FormData.FullName}! Your application has been
-                received.
-              </p>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-                <Button
-                  variant="primary"
-                  href="https://karencommunitychurch.org/"
-                  onClick={handleClose}
-                >
-                  Visit Website
-                </Button>
-              </Modal.Footer>
-            </Modal.Body>
-          ) : (
-            <Modal.Body>
-              <p style={{ color: "red" }}>
-                Sorry, there was an error submitting your application. Please
-                try again.
-              </p>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-              </Modal.Footer>
-            </Modal.Body>
-          )}
-        </Modal>
+       {/* Modal */}
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Application Status</Modal.Title>
+        </Modal.Header>
+        {isApplicationSuccessful ? (
+          <Modal.Body>
+            <p style={{ color: "green" }}>
+              Thank you {FormData.FullName}! Your application has been received.
+            </p>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button
+                variant="primary"
+                href="https://karencommunitychurch.org/"
+                onClick={handleClose}
+              >
+                Visit Website
+              </Button>
+            </Modal.Footer>
+          </Modal.Body>
+        ) : (
+          <Modal.Body>
+            <p style={{ color: "red" }}>
+              Sorry, there was an error submitting your application. Please try again.
+            </p>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal.Body>
+        )}
+      </Modal>
 
         {/* Error Modal */}
         <Modal show={error !== ""} onHide={() => setError("")} centered>
