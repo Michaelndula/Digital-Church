@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('sourceofReferral');
             $table->string('reasonforApplication');
             $table->string('Expectations');
-            $table->string('Strenths');
+            $table->string('Strengths');
             $table->string('Weakness');
             $table->string('multiRole');
             $table->string('internshipGoals');
@@ -49,12 +49,12 @@ return new class extends Migration
             $table->string('SchoolAddress')->nullable();
             $table->string('YearofGrad')->nullable();
 
-            $table->string('cv')->nullable();
+            $table->string('cv');
             $table->string('CoverLetter')->nullable();
-            $table->string('GoodConductCert')->nullable();
+            $table->string('GoodConductCert');
             $table->string('passportPhoto')->nullable();
-            $table->string('ID_front')->nullable();
-            $table->string('ID_back')->nullable();
+            $table->string('ID_front');
+            $table->string('ID_back');
 
             $table->string('PersonalRefFirstName');
             $table->string('PersonalRefSecondName');

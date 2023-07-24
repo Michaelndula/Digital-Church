@@ -22,15 +22,36 @@ class KccApplicationController extends Controller
         $applicant->FullName = $request->input('FullName');
         $applicant->email = $request->input('email');
         $applicant->PhoneNumber = $request->input('PhoneNumber');
-        $applicant->id_number = $request->input('id_number');
-        $applicant->KRA_number = $request->input('KRA_number');
         $applicant->DateofBirth = $request->input('DateofBirth');
         $applicant->gender = $request->input('gender');
+        $applicant->id_number = $request->input('id_number');
+        $applicant->KRA_number = $request->input('KRA_number');
         $applicant->county = $request->input('county');
         $applicant->residence = $request->input('residence');
+        $applicant->currentChurch = $request->input('currentChurch');
+        $applicant->relationshipStatus = $request->input('relationshipStatus');
+        $applicant->Hobbies = $request->input('Hobbies');
+
+        $applicant->sourceofReferral = $request->input('sourceofReferral');
+        $applicant->reasonforApplication = $request->input('reasonforApplication');
+        $applicant->Expectations = $request->input('Expectations');
+        $applicant->Strengths = $request->input('Strengths');
+        $applicant->Weakness = $request->input('Weakness');
+        $applicant->multiRole = $request->input('multiRole');
+        $applicant->internshipGoals = $request->input('internshipGoals');
+        $applicant->criminalHistory = $request->input('criminalHistory');
+
+        $applicant->Testimony = $request->input('Testimony');
+        $applicant->additionalMessage = $request->input('additionalMessage');
+        $applicant->prayerForm = $request->input('prayerForm');
+        $applicant->fastingForm = $request->input('fastingForm');
+        $applicant->witnessingForm = $request->input('witnessingForm');
+        $applicant->bibleReadingForm = $request->input('bibleReadingForm');
+        $applicant->charityForm = $request->input('charityForm');
+
         $applicant->SchoolName = $request->input('SchoolName');
-        $applicant->SchoolAddress = $request->input('SchoolAddress');
         $applicant->course = $request->input('course');
+        $applicant->SchoolAddress = $request->input('SchoolAddress');
         $applicant->YearofGrad = $request->input('YearofGrad');
        
         if($request->hasFile('cv')){
@@ -66,13 +87,47 @@ class KccApplicationController extends Controller
             $GoodConductCert = $this->generate_file_name($GoodConductCert);
             $applicant->GoodConductCert = $GoodConductCert;
         }
+        if($request->hasFile('passportPhoto')){
+            $allowedExtensions = ['jpeg, png'];
+            $passportPhoto = $request->file('passportPhoto');
+            $extension = $passportPhoto->getClientOriginalExtension();
+            if (!in_array($extension, $allowedExtensions)) {
+                return response()->json(['message' => 'Only JPEG, png files allowed.'], 407);
+            }
+            $passportPhoto = $this->generate_file_name($passportPhoto);
+            $applicant->passportPhoto = $passportPhoto;
+        }
+
+        if($request->hasFile('ID_front')){
+            $allowedExtensions = ['jpeg, png'];
+            $ID_front = $request->file('ID_front');
+            $extension = $ID_front->getClientOriginalExtension();
+            if (!in_array($extension, $allowedExtensions)) {
+                return response()->json(['message' => 'Only JPEG, png files allowed.'], 407);
+            }
+            $ID_front = $this->generate_file_name($ID_front);
+            $applicant->ID_front = $ID_front;
+        }
+        if($request->hasFile('ID_back')){
+            $allowedExtensions = ['jpeg, png'];
+            $ID_back = $request->file('ID_back');
+            $extension = $ID_back->getClientOriginalExtension();
+            if (!in_array($extension, $allowedExtensions)) {
+                return response()->json(['message' => 'Only JPEG, png files allowed.'], 407);
+            }
+            $ID_back = $this->generate_file_name($ID_back);
+            $applicant->ID_back = $ID_back;
+        }
 
 
-        $applicant->RefFirstName = $request->input('RefFirstName');
-        $applicant->RefSecondName = $request->input('RefSecondName');
-        $applicant->RefPhoneNumber = $request->input('RefPhoneNumber');
-        $applicant->RefRelationship = $request->input('RefRelationship');
-        $applicant->message = $request->input('message');
+        $applicant->PersonalRefFirstName = $request->input('PersonalRefFirstName');
+        $applicant->PersonalRefSecondName = $request->input('PersonalRefSecondName');
+        $applicant->PersonalRefPhoneNumber = $request->input('PersonalRefPhoneNumber');
+        $applicant->PersonalRefRelationship = $request->input('PersonalRefRelationship');
+        $applicant->MinistryRefFirstName = $request->input('MinistryRefFirstName');
+        $applicant->MinistryRefSecondName = $request->input('MinistryRefSecondName');
+        $applicant->MinistryRefPhoneNumber = $request->input('MinistryRefPhoneNumber');
+        $applicant->MinistryRefRelationship = $request->input('MinistryRefRelationship');
 
         $applicant->save();
 
