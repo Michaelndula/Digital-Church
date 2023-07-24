@@ -253,7 +253,7 @@ function ApplicationForm() {
                 
                 <input
                 type="text"
-                name="CurrentChurch"
+                name="currentChurch"
                 onChange={(e)=>setmessage(e.target.value)}
                 required
               />
@@ -272,10 +272,10 @@ function ApplicationForm() {
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="gender"
+                  name="relationshipStatus"
                   onChange={(e)=>setgender(e.target.value)}
                   id="inlineRadio1"
-                  value="Male"
+                  value="Married"
                 />
                 <label className="form-check-label">
                   Married
@@ -285,10 +285,10 @@ function ApplicationForm() {
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="gender"
+                  name="relationshipStatus"
                   onChange={(e)=>setgender(e.target.value)}
                   id="inlineRadio1"
-                  value="Male"
+                  value="Engaged"
                 />
                 <label className="form-check-label">
                   Enganged
@@ -306,7 +306,7 @@ function ApplicationForm() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="2"
-                  name="message"
+                  name="Hobbies"
                   onChange={(e)=>setmessage(e.target.value)}
                 ></textarea>
               </div>
@@ -323,7 +323,7 @@ function ApplicationForm() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="2"
-                  name="message"
+                  name="sourceofReferral"
                   onChange={(e)=>setmessage(e.target.value)}
                 ></textarea>
               </div>
@@ -337,7 +337,7 @@ function ApplicationForm() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  name="message"
+                  name="reasonforApplication"
                   onChange={(e)=>setmessage(e.target.value)}
                 ></textarea>
               </div>
@@ -351,7 +351,7 @@ function ApplicationForm() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  name="message"
+                  name="Expectations"
                   onChange={(e)=>setmessage(e.target.value)}
                 ></textarea>
               </div>
@@ -365,7 +365,7 @@ function ApplicationForm() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  name="message"
+                  name="Strengths"
                   onChange={(e)=>setmessage(e.target.value)}
                 ></textarea>
               </div>
@@ -379,7 +379,7 @@ function ApplicationForm() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  name="message"
+                  name="Weakness"
                   onChange={(e)=>setmessage(e.target.value)}
                 ></textarea>
               </div>
@@ -393,7 +393,7 @@ function ApplicationForm() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  name="message"
+                  name="multiRole"
                   onChange={(e)=>setmessage(e.target.value)}
                 ></textarea>
               </div>
@@ -407,7 +407,7 @@ function ApplicationForm() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  name="message"
+                  name="internshipGoals"
                   onChange={(e)=>setmessage(e.target.value)}
                 ></textarea>
               </div>
@@ -421,7 +421,7 @@ function ApplicationForm() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  name="message"
+                  name="criminalHistory"
                   onChange={(e)=>setmessage(e.target.value)}
                 ></textarea>
               </div>
@@ -438,7 +438,7 @@ function ApplicationForm() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  name="message"
+                  name="Testimony"
                   onChange={(e)=>setmessage(e.target.value)}
                 ></textarea>
               </div>
@@ -453,7 +453,7 @@ function ApplicationForm() {
                   className="form-control"
                   id="exampleFormControlTextarea1"
                   rows="3"
-                  name="message"
+                  name="additionalMessage"
                   onChange={(e)=>setmessage(e.target.value)}
                 ></textarea>
               </div>
@@ -469,7 +469,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="prayerForm" 
                 id="inlineRadio1" 
                 value="1"/>
             <label>1</label>
@@ -478,7 +478,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="prayerForm" 
                 id="inlineRadio1" 
                 value="2"/>
             <label>2</label>
@@ -487,7 +487,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="prayerForm" 
                 id="inlineRadio1" 
                 value="3"/>
             <label>3</label>
@@ -496,7 +496,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="prayerForm" 
                 id="inlineRadio1" 
                 value="4"/>
             <label>4</label>
@@ -505,7 +505,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="prayerForm" 
                 id="inlineRadio1" 
                 value="5"/>
             <label>5</label>
@@ -515,7 +515,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="fastingForm" 
                 id="inlineRadio1" 
                 value="1"/>
             <label>1</label>
@@ -524,7 +524,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="fastingForm" 
                 id="inlineRadio1" 
                 value="2"/>
             <label>2</label>
@@ -533,7 +533,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="fastingForm" 
                 id="inlineRadio1" 
                 value="3"/>
             <label>3</label>
@@ -542,7 +542,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="fastingForm" 
                 id="inlineRadio1" 
                 value="4"/>
             <label>4</label>
@@ -551,7 +551,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="fastingForm" 
                 id="inlineRadio1" 
                 value="5"/>
             <label>5</label>
@@ -563,7 +563,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="witnessingForm" 
                 id="inlineRadio1" 
                 value="1"/>
             <label>1</label>
@@ -572,7 +572,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="witnessingForm" 
                 id="inlineRadio1" 
                 value="2"/>
             <label>2</label>
@@ -581,7 +581,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="witnessingForm" 
                 id="inlineRadio1" 
                 value="3"/>
             <label>3</label>
@@ -590,7 +590,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="witnessingForm" 
                 id="inlineRadio1" 
                 value="4"/>
             <label>4</label>
@@ -599,7 +599,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="witnessingForm" 
                 id="inlineRadio1" 
                 value="5"/>
             <label>5</label>
@@ -609,7 +609,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="bibleReadingForm" 
                 id="inlineRadio1" 
                 value="1"/>
             <label>1</label>
@@ -618,7 +618,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="bibleReadingForm" 
                 id="inlineRadio1" 
                 value="2"/>
             <label>2</label>
@@ -627,7 +627,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="bibleReadingForm" 
                 id="inlineRadio1" 
                 value="3"/>
             <label>3</label>
@@ -636,7 +636,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="bibleReadingForm" 
                 id="inlineRadio1" 
                 value="4"/>
             <label>4</label>
@@ -645,7 +645,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="bibleReadingForm" 
                 id="inlineRadio1" 
                 value="5"/>
             <label>5</label>
@@ -657,7 +657,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="charityForm" 
                 id="inlineRadio1" 
                 value="1"/>
             <label>1</label>
@@ -666,7 +666,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="charityForm" 
                 id="inlineRadio1" 
                 value="2"/>
             <label>2</label>
@@ -675,7 +675,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="charityForm" 
                 id="inlineRadio1" 
                 value="3"/>
             <label>3</label>
@@ -684,7 +684,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="charityForm" 
                 id="inlineRadio1" 
                 value="4"/>
             <label>4</label>
@@ -693,7 +693,7 @@ function ApplicationForm() {
             <input 
                 class="form-check-input" 
                 type="radio" 
-                name="inlineRadioOptions" 
+                name="charityForm" 
                 id="inlineRadio1" 
                 value="5"/>
             <label>5</label>
@@ -791,7 +791,8 @@ function ApplicationForm() {
             <input 
               class="form-control form-control-lg" 
               type="file" 
-              id="formFileMultiple" multiple
+              id="formFileMultiple" 
+              name="passportPhoto"  multiple
               />
               </div>
             </div>
@@ -804,9 +805,9 @@ function ApplicationForm() {
                 </label>
                 <input
                   className="form-control form-control-lg"
-                  id="formFileLg"
                   type="file"
-                  name="GoodConductCert"
+                  id="formFileLg"
+                  name="ID_front"
                   onChange={(e)=>setGoodConductCert(e.target.files[0])}
                 />
               </div>
@@ -817,7 +818,9 @@ function ApplicationForm() {
             <input 
               class="form-control form-control-lg" 
               type="file" 
-              id="formFileMultiple" 
+              id="formFileLg" 
+              name="ID_back"
+              onChange={(e)=>setGoodConductCert(e.target.files[0])}
               />
               </div>
             </div>
@@ -826,13 +829,13 @@ function ApplicationForm() {
           <br></br>
           <br></br>
           <div className="input-box address">
-            <label><b>Referee</b></label>
+            <label><b>Personal Referee</b></label>
             <div className="column">
               <div>
                 <input
                   type="text"
                   placeholder="First Name"
-                  name="RefFirstName"
+                  name="PersonalRefFirstName"
                   onChange={(e)=>setRefFirstName(e.target.value)}
                   required
                 />
@@ -844,7 +847,7 @@ function ApplicationForm() {
                 <input
                   type="text"
                   placeholder="Last Name"
-                  name="RefSecondName"
+                  name="PersonalRefSecondName"
                   onChange={(e)=>setRefSecondName(e.target.value)}
                   required
                 />
@@ -854,27 +857,27 @@ function ApplicationForm() {
               <input
                 type="text"
                 placeholder="Phone Number"
-                name="RefPhoneNumber"
+                name="PersonalRefPhoneNumber"
                 onChange={(e)=>setRefPhoneNumber(e.target.value)}
                 required
               />
               <input
                 type="text"
                 placeholder="Relationship"
-                name="RefRelationship"
+                name="PersonalRefRelationship"
                 onChange={(e)=>setRefRelationship(e.target.value)}
                 required
               />
             </div>
           </div>
           <div className="input-box address">
-            <label><b>Referee</b></label>
+            <label><b>Ministry Referee</b></label>
             <div className="column">
               <div>
                 <input
                   type="text"
                   placeholder="First Name"
-                  name="RefFirstName"
+                  name="MinistryRefFirstName"
                   onChange={(e)=>setRefFirstName(e.target.value)}
                   required
                 />
@@ -886,7 +889,7 @@ function ApplicationForm() {
                 <input
                   type="text"
                   placeholder="Last Name"
-                  name="RefSecondName"
+                  name="MinistryRefSecondName"
                   onChange={(e)=>setRefSecondName(e.target.value)}
                   required
                 />
@@ -896,14 +899,14 @@ function ApplicationForm() {
               <input
                 type="text"
                 placeholder="Phone Number"
-                name="RefPhoneNumber"
+                name="MinistryRefPhoneNumber"
                 onChange={(e)=>setRefPhoneNumber(e.target.value)}
                 required
               />
               <input
                 type="text"
                 placeholder="Relationship"
-                name="RefRelationship"
+                name="MinistryRefRelationship"
                 onChange={(e)=>setRefRelationship(e.target.value)}
                 required
               />
