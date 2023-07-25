@@ -17,24 +17,47 @@ return new class extends Migration
             $table->string('FullName');
             $table->string('email');
             $table->string('PhoneNumber');
-            $table->string('id_number');
-            $table->string('KRA_number');
             $table->string('DateofBirth');
             $table->string('gender');
-            $table->string('county');
+            $table->string('id_number');
+            $table->string('KRA_number');  
             $table->string('residence');
-            $table->string('SchoolName')->nullable();
-            $table->string('YearofGrad')->nullable();
-            $table->string('SchoolAddress')->nullable();
-            $table->string('course')->nullable();
-            $table->binary('cv')->nullable();
-            $table->binary('CoverLetter')->nullable();
-            $table->binary('GoodConductCert')->nullable();
-            $table->string('RefFirstName');
-            $table->string('RefSecondName');
-            $table->string('RefPhoneNumber');
-            $table->string('RefRelationship');
-            $table->string('message');
+            $table->string('currentChurch');
+            $table->string('relationshipStatus');
+            $table->string('Hobbies');
+
+            $table->string('sourceofReferral');
+            $table->string('reasonforApplication');
+            $table->string('Expectations');
+            $table->string('Strengths');
+            $table->string('Weakness');
+            $table->string('multiRole');
+            $table->string('internshipGoals');
+            $table->string('criminalHistory');
+
+            $table->string('Testimony');
+            $table->string('additionalMessage');
+            $table->string('prayerForm');
+            $table->string('fastingForm');
+            $table->string('witnessingForm');
+            $table->string('bibleReadingForm');
+            $table->string('charityForm');
+
+            $table->string('cv');
+            $table->string('CoverLetter');
+            $table->string('GoodConductCert');
+            $table->string('passportPhoto');
+            $table->string('ID_front');
+            $table->string('ID_back');
+
+            $table->string('PersonalRefFirstName');
+            $table->string('PersonalRefSecondName');
+            $table->string('PersonalRefPhoneNumber');
+            $table->string('PersonalRefRelationship');
+            $table->string('MinistryRefFirstName');
+            $table->string('MinistryRefSecondName');
+            $table->string('MinistryRefPhoneNumber');
+            $table->string('MinistryRefRelationship');
             $table->timestamps();
         });
     }

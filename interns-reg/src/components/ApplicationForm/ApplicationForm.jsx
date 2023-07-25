@@ -1,44 +1,118 @@
 import { React, useEffect, useState } from "react";
-import axios from 'axios';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal, Button } from "react-bootstrap";
 
 function ApplicationForm() {
+  const [FullName, setFullName] = useState("");
+  const [email, setemail] = useState("");
+  const [PhoneNumber, setPhoneNumber] = useState("");
+  const [DateofBirth, setDateofBirth] = useState("");
+  const [gender, setgender] = useState("");
+  const [id_number, setid_number] = useState("");
+  const [KRA_number, setKRA_number] = useState("");
+  const [residence, setresidence] = useState("");
+  const [currentChurch, setcurrentChurch] = useState("");
+  const [relationshipStatus, setrelationshipStatus] = useState("");
+  const [Hobbies, setHobbies] = useState("");
 
-  const [formData, setFormData] = useState({
-    FullName: '',
-    email: '',
-    PhoneNumber: '',
-    id_number: '',
-    KRA_number: '',
-    DateofBirth: '',
-    gender: '',
-    county: '',
-    residence: '',
-    SchoolName: '',
-    SchoolAddress: '',
-    course: '',
-    YearofGrad: '',
-    cv: null,
-    CoverLetter: null,
-    GoodConductCert: null,
-    RefFirstName: '',
-    RefSecondName: '',
-    RefPhoneNumber: '',
-    RefRelationship: '',
-    message: ''
-  })
+  const [sourceofReferral, setsourceofReferral] = useState("");
+  const [reasonforApplication, setreasonforApplication] = useState("");
+  const [Expectations, setExpectations] = useState("");
+  const [Strengths, setStrengths] = useState("");
+  const [Weakness, setWeakness] = useState("");
+  const [multiRole, setmultiRole] = useState("");
+  const [internshipGoals, setinternshipGoals] = useState("");
+  const [criminalHistory, setcriminalHistory] = useState("");
 
-  const handleInput = (event) => {
-    setFormData({...formData, [event.target.name]: event.target.value})
-  }
+  const [Testimony, setTestimony] = useState("");
+  const [additionalMessage, setadditionalMessage] = useState("");
+  const [prayerForm, setprayerForm] = useState("");
+  const [fastingForm, setfastingForm] = useState("");
+  const [witnessingForm, setwitnessingForm] = useState("");
+  const [bibleReadingForm, setbibleReadingForm] = useState("");
+  const [charityForm, setcharityForm] = useState("");
 
-  async function handleSubmit(event){
+  const [cv, setFile] = useState("");
+  const [CoverLetter, setCoverLetter] = useState("");
+  const [GoodConductCert, setGoodConductCert] = useState("");
+  const [passportPhoto, setpassportPhoto] = useState("");
+  const [ID_front, setID_front] = useState("");
+  const [ID_back, setID_back] = useState("");
 
+  const [PersonalRefFirstName, setPersonalRefFirstName] = useState("");
+  const [PersonalRefSecondName, setPersonalRefSecondName] = useState("");
+  const [PersonalRefPhoneNumber, setPersonalRefPhoneNumber] = useState("");
+  const [PersonalRefRelationship, setPersonalRefRelationship] = useState("");
+  const [MinistryRefFirstName, setMinistryRefFirstName] = useState("");
+  const [MinistryRefSecondName, setMinistryRefSecondName] = useState("");
+  const [MinistryRefPhoneNumber, setMinistryRefPhoneNumber] = useState("");
+  const [MinistryRefRelationship, setMinistryRefRelationship] = useState("");
+
+    const [isApplicationSuccessful, setApplicationSuccess] = useState(false);
+    const [error, setError] = useState("");
+
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => {
+      setShow(false);
+      if (isApplicationSuccessful) {
+        window.location.reload();
+      } else {
+        
+      }
+    };
+    const handleShow = () => setShow(true);
+
+  async function handleSubmit(event) {
+    const formData = new FormData();
+
+    formData.append("FullName", FullName);
+    formData.append("email", email);
+    formData.append("PhoneNumber", PhoneNumber);
+    formData.append("DateofBirth", DateofBirth);
+    formData.append("gender", gender);
+    formData.append("id_number", id_number);
+    formData.append("KRA_number", KRA_number);
+    formData.append("residence", residence);
+    formData.append("currentChurch", currentChurch);
+    formData.append("relationshipStatus", relationshipStatus);
+    formData.append("Hobbies", Hobbies);
+    formData.append("sourceofReferral", sourceofReferral);
+    formData.append("reasonforApplication", reasonforApplication);
+    formData.append("Expectations", Expectations);
+    formData.append("Strengths", Strengths);
+    formData.append("Weakness", Weakness);
+    formData.append("multiRole", multiRole);
+    formData.append("internshipGoals", internshipGoals);
+    formData.append("criminalHistory", criminalHistory);
+    formData.append("Testimony", Testimony);
+    formData.append("additionalMessage", additionalMessage);
+    formData.append("prayerForm", prayerForm);
+    formData.append("fastingForm", fastingForm);
+    formData.append("witnessingForm", witnessingForm);
+    formData.append("bibleReadingForm", bibleReadingForm);
+    formData.append("charityForm", charityForm);
+
+    formData.append("cv", cv);
+    formData.append("CoverLetter", CoverLetter);
+    formData.append("GoodConductCert", GoodConductCert);
+    formData.append("passportPhoto", passportPhoto);
+    formData.append("ID_front", ID_front);
+    formData.append("ID_back", ID_back);
+
+    formData.append("PersonalRefFirstName", PersonalRefFirstName);
+    formData.append("PersonalRefSecondName", PersonalRefSecondName);
+    formData.append("PersonalRefPhoneNumber", PersonalRefPhoneNumber);
+    formData.append("PersonalRefRelationship", PersonalRefRelationship);
+    formData.append("MinistryRefFirstName", MinistryRefFirstName);
+    formData.append("MinistryRefSecondName", MinistryRefSecondName);
+    formData.append("MinistryRefPhoneNumber", MinistryRefPhoneNumber);
+    formData.append("MinistryRefRelationship", MinistryRefRelationship);
 
     const requestOptions={
       method:'POST',
       headers:{
-        // 'Content-Type':'application/json',
-        'Content-Type': 'multipart/form-data'
+        'Content-Type':'application/json',
     },
 
       body: JSON.stringify(formData),
@@ -46,309 +120,874 @@ function ApplicationForm() {
 
     event.preventDefault();
 
-    console.log(formData)
+    // console.log(formData);
 
-    await fetch('http://localhost:8000/api/applicants', requestOptions)
-    .then((response) => {
-      // Handle the response from the server
-      if(response.ok){
-        console.log('response', response);
-        return response.json();
-      }else{
-        throw new Error("Something went wrong!");
-      }
-    
-    }).then(data => {
-      alert(`Thank you ${formData.FullName}! Your application has been received.`);
-    })
-    .catch((error) => {
-      // Handle any errors
-      console.error(error);
-    });
-
-    
+    await fetch("http://localhost:8000/api/applicants", requestOptions)
+      .then((response) => {
+        // Handle the response from the server
+        if (response.ok) {
+          console.log("response", response);
+          return response.json();
+        } else if (response.status === 409) {
+          throw new Error("Applicant already exists");
+        } else if (response.status === 406) {
+          throw new Error("Only PDF or Word documents are allowed.");
+        } else {
+          throw new Error(response.statusText);
+        }
+      })
+      .then((data) => {
+        setApplicationSuccess(true);
+      })
+      .catch((error) => {
+        setApplicationSuccess(false);
+        setError(error.message);
+        console.error(error);
+      });
   }
-  
 
   return (
+    <>
       <section className="container">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "35vh",
+          }}
+        >
+          <img src="images/kcclogo.png" />
+        </div>
         <header>Application Form</header>
-        <form onSubmit= { handleSubmit } className="form">
+        <form onSubmit={handleSubmit} className="form">
+          <h3>Section One</h3>
           <div className="input-box">
             <label>Full Name</label>
             <input
               type="text"
               placeholder="Enter full name"
               name="FullName"
-              onChange={handleInput}
+              onChange={(e) => setFullName(e.target.value)}
               required
             />
           </div>
-
-          <div className="input-box">
-            <label>Email Address</label>
-            <input 
-            type="text" 
-            placeholder="Enter email address" 
-            name="email"
-            onChange={handleInput}
-            required />
-          </div>
-
           <div className="column">
             <div className="input-box">
-              <label>Phone Number</label>
-              <input 
-              type="text" 
-              placeholder="Enter phone number" 
-              name="PhoneNumber"
-              onChange={handleInput}
-              required />
+              <label>Email Address</label>
+              <input
+                type="text"
+                placeholder="Enter email address"
+                name="email"
+                onChange={(e) => setemail(e.target.value)}
+                required
+              />
             </div>
             <div className="input-box">
-              <label>Birth Date</label>
-              <input 
-                type="date" 
-                placeholder="Enter birth date" 
-                name="DateofBirth"
-                onChange={handleInput}
-                required 
+              <label>Phone Number</label>
+              <input
+                type="text"
+                placeholder="Enter phone number"
+                name="PhoneNumber"
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                required
               />
+            </div>
+          </div>
+          <div className="column" style={{ marginTop: "2%" }}>
+            <div className="col-md-6" style={{ display: 'flex', flexDirection: 'column' }}>
+              <label>Birth Date</label>
+              <input
+                type="date"
+                placeholder="Enter birth date"
+                name="DateofBirth"
+                onChange={(e) => setDateofBirth(e.target.value)}
+                max={new Date().toISOString().split("T")[0]}
+                required
+              />
+            </div>
+            <div className="col-md-6">
+              <label>Gender</label>
+              <div className="gender-option">
+                <div className="form-check form-check-inline">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="gender"
+                    onChange={(e) => setgender(e.target.value)}
+                    id="inlineRadio1"
+                    value="Male"
+                  />
+                  <label className="form-check-label">Male</label>
+                </div>
+                <div className="form-check form-check-inline">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="gender"
+                    onChange={(e) => setgender(e.target.value)}
+                    id="inlineRadio2"
+                    value="Female"
+                  />
+                  <label className="form-check-label">Female</label>
+                </div>
+              </div>
             </div>
           </div>
           <div className="column">
             <div className="input-box">
               <label>ID Number</label>
-              <input 
-                type="text" 
-                placeholder="Enter ID number" 
+              <input
+                type="text"
+                placeholder="Enter ID number"
                 name="id_number"
-                onChange={handleInput}
-                required 
-                />
+                onChange={(e) => setid_number(e.target.value)}
+                required
+              />
             </div>
             <div className="input-box">
               <label>KRA Number</label>
-              <input 
-              type="text" 
-              placeholder="Enter kra number" 
-              name="KRA_number"
-              onChange={handleInput}
-              required 
+              <input
+                type="text"
+                placeholder="Enter kra number"
+                name="KRA_number"
+                onChange={(e) => setKRA_number(e.target.value)}
+                required
               />
             </div>
           </div>
-          <div className="gender-box">
-            <h3>Gender</h3>
-            <div className="gender-option">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="gender" onChange={handleInput} id="inlineRadio1" value="Male"/>
-              <label class="form-check-label" for="inlineRadio1">Male</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="gender" onChange={handleInput} id="inlineRadio2" value="Female"/>
-              <label class="form-check-label" for="inlineRadio2">Female</label>
-            </div>
-              {/* <div className="gender">
-                <input
-                type="radio" 
-                id="check-male" 
-                name="gender"
-                onChange={handleInput}
-                checked />
-                <label for="check-male">male</label>
-              </div>
-              <div className="gender">
-                <input 
-                  type="radio" 
-                  id="check-female" 
-                  name="gender"
-                  onChange={handleInput}
-                />
-                <label for="check-female">Female</label>
-              </div> */}
-            </div>
-          </div>
-          <div className="input-box address">
-            <label>Address</label>
-            <div className="column">
-            <input 
-                type="text" 
-                placeholder="County" 
-                name="county"
-                onChange={handleInput}
-                required 
-              />
-              {/* <div className="select-box">
-                <select>
-                  <option>Select County</option>
-                  <option></option>
-                </select>
-              </div> */}
-              <input 
-                type="text" 
-                placeholder="Residency/Estate" 
+          <div className="column">
+            <div className="input-box">
+              <label>Address</label>
+              <input
+                type="text"
+                placeholder="Residency/Estate"
                 name="residence"
-                onChange={handleInput}
-                required 
+                onChange={(e) => setresidence(e.target.value)}
+                required
+              />
+            </div>
+            <div className="input-box">
+              <label>Current Church</label>
+              <input
+                type="text"
+                placeholder="Enter current Church"
+                name="currentChurch"
+                onChange={(e) => setcurrentChurch(e.target.value)}
+                required
               />
             </div>
           </div>
-          <br></br>
-          <br></br>
-          <div className="input-box address">
-            <label>Education</label>
-            <div className="column">
-              <input 
-                type="text" 
-                placeholder="School Name" 
-                name="SchoolName"
-                onChange={handleInput}
-              />
-              <div className="select-box">
-                <select
-                  type="text"
-                  id="ddlYears"
-                  placeholder="Year"
-                  className="form-control"
-                  name="YearofGrad"
-                  onChange={handleInput}
-                >
-                  <option hidden>Year of Graduation</option>
-                </select>
-              </div>
+          
+          <div className="column">
+            <div className="input-box" style={{ display: 'flex', flexDirection: 'column' }}>
+              <label>Relationship Status</label>
+              <select  onChange={(e) => setrelationshipStatus(e.target.value)}>
+                <option value="option1">Single</option>
+                <option value="option2">Married</option>
+                <option value="option3">Engaged</option>
+              </select>
             </div>
-            <div className="column">
-              <input 
-                type="text" 
-                placeholder="School Address" 
-                name="SchoolAddress"
-                onChange={handleInput}
-              />
-              <input 
-                type="text" 
-                placeholder="Course" 
-                name="course"
-                onChange={handleInput}
-              />
+            <div className="input-box">
+            <label>Hobbies</label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="2"
+                name="Hobbies"
+                onChange={(e) => setHobbies(e.target.value)}
+              ></textarea>
             </div>
           </div>
 
           <br></br>
           <br></br>
+          <h3>Section Two</h3>
           <div className="input-box address">
-            <label>Documents</label>
+            <div className="form-group">
+              <label>Kindly share with us how you heard about SALT?</label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="2"
+                name="sourceofReferral"
+                onChange={(e) => setsourceofReferral(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
+          <div className="input-box address">
+            <div className="form-group">
+              <label>Why are you interested in serving at K.C.C?</label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                name="reasonforApplication"
+                onChange={(e) => setreasonforApplication(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
+          <div className="input-box address">
+            <div className="form-group">
+              <label>
+                What are some expectations you are having as you come into SALT?
+              </label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                name="Expectations"
+                onChange={(e) => setExpectations(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
+          <div className="input-box address">
+            <div className="form-group">
+              <label>What are your strengths?</label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                name="Strengths"
+                onChange={(e) => setStrengths(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
+          <div className="input-box address">
+            <div className="form-group">
+              <label>What are your areas of weakness?</label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                name="Weakness"
+                onChange={(e) => setWeakness(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
+          <div className="input-box address">
+            <div className="form-group">
+              <label>
+                SALT will involve serving in a number of ministries in KCC.
+                What’s your take on this?
+              </label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                name="multiRole"
+                onChange={(e) => setmultiRole(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
+          <div className="input-box address">
+            <div className="form-group">
+              <label>
+                At the end of your internship, what kind of impact are you
+                hoping to have?
+              </label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                name="internshipGoals"
+                onChange={(e) => setinternshipGoals(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
+          <div className="input-box address">
+            <div className="form-group">
+              <label>
+                Have you ever been convicted of any crime other than a minor
+                traffic violation? If so which ones?
+              </label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                name="criminalHistory"
+                onChange={(e) => setcriminalHistory(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
+          <br></br>
+          <br></br>
+          <h3>Section Three</h3>
+          <div className="input-box address">
+            <div className="form-group">
+              <label>Please share with us your testimony of faith.</label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                name="Testimony"
+                onChange={(e) => setTestimony(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
+          <div className="input-box address">
+            <div className="form-group">
+              <label>
+                Recognizing that by potentially entering into ministry you are
+                being held to a standard of living a Christian life, is there
+                anything you'd like to have a conversation about with us before?
+                If so, please elaborate below.
+              </label>
+              <textarea
+                className="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                name="additionalMessage"
+                onChange={(e) => setadditionalMessage(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
+          <div className="gender-option" style={{marginTop :"2%"}}>
+            <label>
+              On a scale of 1 – 5 (1 being lowest and 5 being highest) how are
+              you doing in the following spiritual disciplines:
+            </label>
+            <div className="column" style={{marginTop :"2%"}}>
+            <div className="col-md-6">
+              <label style={{marginRight :"2%"}}>
+                <b>Prayer</b>
+              </label>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="prayerForm"
+                  id="inlineRadio1"
+                  value="1"
+                  onChange={(e) => setprayerForm(e.target.value)}
+                />
+                <label>1</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="prayerForm"
+                  id="inlineRadio1"
+                  value="2"
+                  onChange={(e) => setprayerForm(e.target.value)}
+                />
+                <label>2</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="prayerForm"
+                  id="inlineRadio1"
+                  value="3"
+                  onChange={(e) => setprayerForm(e.target.value)}
+                />
+                <label>3</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="prayerForm"
+                  id="inlineRadio1"
+                  value="4"
+                  onChange={(e) => setprayerForm(e.target.value)}
+                />
+                <label>4</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="prayerForm"
+                  id="inlineRadio1"
+                  value="5"
+                  onChange={(e) => setprayerForm(e.target.value)}
+                />
+                <label>5</label>
+              </div>
+            </div>
+            <div className="col-md-8">
+            <label style={{marginRight :"2%"}}>
+                <b>Fasting</b>
+              </label>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="fastingForm"
+                  id="inlineRadio1"
+                  value="1"
+                  onChange={(e) => setfastingForm(e.target.value)}
+                />
+                <label>1</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="fastingForm"
+                  id="inlineRadio1"
+                  value="2"
+                  onChange={(e) => setfastingForm(e.target.value)}
+                />
+                <label>2</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="fastingForm"
+                  id="inlineRadio1"
+                  value="3"
+                  onChange={(e) => setfastingForm(e.target.value)}
+                />
+                <label>3</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="fastingForm"
+                  id="inlineRadio1"
+                  value="4"
+                  onChange={(e) => setfastingForm(e.target.value)}
+                />
+                <label>4</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="fastingForm"
+                  id="inlineRadio1"
+                  value="5"
+                  onChange={(e) => setfastingForm(e.target.value)}
+                />
+                <label>5</label>
+              </div>
+            </div> 
+            </div>
+            <div className="column" style={{marginTop :"1%"}}>
+            <div className="col-md-6">
+              <label style={{marginRight :"2%"}}>
+                <b>Witnessing</b>
+              </label>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="witnessingForm"
+                  id="inlineRadio1"
+                  value="1"
+                  onChange={(e) => setwitnessingForm(e.target.value)}
+                />
+                <label>1</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="witnessingForm"
+                  id="inlineRadio1"
+                  value="2"
+                  onChange={(e) => setwitnessingForm(e.target.value)}
+                />
+                <label>2</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="witnessingForm"
+                  id="inlineRadio1"
+                  value="3"
+                  onChange={(e) => setwitnessingForm(e.target.value)}
+                />
+                <label>3</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="witnessingForm"
+                  id="inlineRadio1"
+                  value="4"
+                  onChange={(e) => setwitnessingForm(e.target.value)}
+                />
+                <label>4</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="witnessingForm"
+                  id="inlineRadio1"
+                  value="5"
+                  onChange={(e) => setwitnessingForm(e.target.value)}
+                />
+                <label>5</label>
+              </div>
+            </div>
+            <div className="col-md-8">
+              <label style={{marginRight :"2%"}}>
+                <b>Reading your Bible</b>
+              </label>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="bibleReadingForm"
+                  id="inlineRadio1"
+                  value="1"
+                  onChange={(e) => setbibleReadingForm(e.target.value)}
+                />
+                <label>1</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="bibleReadingForm"
+                  id="inlineRadio1"
+                  value="2"
+                  onChange={(e) => setbibleReadingForm(e.target.value)}
+                />
+                <label>2</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="bibleReadingForm"
+                  id="inlineRadio1"
+                  value="3"
+                  onChange={(e) => setbibleReadingForm(e.target.value)}
+                />
+                <label>3</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="bibleReadingForm"
+                  id="inlineRadio1"
+                  value="4"
+                  onChange={(e) => setbibleReadingForm(e.target.value)}
+                />
+                <label>4</label>
+              </div>
+              <div className="form-check form-check-inline">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="bibleReadingForm"
+                  id="inlineRadio1"
+                  value="5"
+                  onChange={(e) => setbibleReadingForm(e.target.value)}
+                />
+                <label>5</label>
+              </div>
+            </div>
+
+            </div>
+            <div className="column" style={{marginTop :"1%"}}>
+              <label>
+                  <b>Caring For the Vulnerable</b>
+                </label>
+              <div className="col-md-8">
+               
+                <div className="form-check form-check-inline">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="charityForm"
+                    id="inlineRadio1"
+                    value="1"
+                    onChange={(e) => setcharityForm(e.target.value)}
+                  />
+                  <label>1</label>
+                </div>
+                <div className="form-check form-check-inline">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="charityForm"
+                    id="inlineRadio1"
+                    value="2"
+                    onChange={(e) => setcharityForm(e.target.value)}
+                  />
+                  <label>2</label>
+                </div>
+                <div className="form-check form-check-inline">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="charityForm"
+                    id="inlineRadio1"
+                    value="3"
+                    onChange={(e) => setcharityForm(e.target.value)}
+                  />
+                  <label>3</label>
+                </div>
+                <div className="form-check form-check-inline">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="charityForm"
+                    id="inlineRadio1"
+                    value="4"
+                    onChange={(e) => setcharityForm(e.target.value)}
+                  />
+                  <label>4</label>
+                </div>
+                <div className="form-check form-check-inline">
+                  <input
+                    className="form-check-input"
+                    type="radio"
+                    name="charityForm"
+                    id="inlineRadio1"
+                    value="5"
+                    onChange={(e) => setcharityForm(e.target.value)}
+                  />
+                  <label>5</label>
+                </div>
+                <div className="col-md-4">
+                  
+                </div>
+            </div>
+             
+            </div>
+          </div>
+          <br></br>
+          <br></br>
+          <div className="input-box address">
+            <label>
+              <b>Documents</b>
+            </label>
             <br></br>
             <br></br>
             <div className="column">
               <div>
-                <label for="formFileLg" className="form-label">
-                  Upload CV
-                </label>
+                <label className="form-label">Upload CV</label>
                 <input
                   className="form-control form-control-lg"
                   id="formFileLg"
                   type="file"
                   name="cv"
-                  onChange={handleInput}
+                  onChange={(e) => setFile(e.target.files[0])}
                 />
               </div>
               <div>
-                <label for="formFileLg" className="form-label">
-                  Upload Cover Letter{" "}
-                </label>
+                <label className="form-label">Upload Cover Letter </label>
                 <input
                   className="form-control form-control-lg"
                   id="formFileLg"
                   type="file"
                   name="CoverLetter"
-                  onChange={handleInput}
+                  onChange={(e) => setCoverLetter(e.target.files[0])}
+                  // onChange={handleInput}
                 />
               </div>
             </div>
             <br></br>
-            <br></br>
             <div className="column">
               <div>
-                <label for="formFileLg" className="form-label">
-                  Upload Certicate of good conduct
+                <label className="form-label">
+                  Upload Certicate of Good Conduct
                 </label>
                 <input
                   className="form-control form-control-lg"
                   id="formFileLg"
                   type="file"
                   name="GoodConductCert"
-                  onChange={handleInput}
+                  onChange={(e) => setGoodConductCert(e.target.files[0])}
                 />
               </div>
               <div>
+                <label className="form-label">Upload Passport-Sized Photos</label>
+                <input
+                  className="form-control form-control-lg"
+                  type="file"
+                  id="formFileMultiple"
+                  name="passportPhoto"
+                  onChange={(e) => setpassportPhoto(e.target.files[0])}
+                  multiple
+                />
               </div>
+            </div>
+          </div>
+          <br></br>
+          <div className="column">
+            <div>
+              <label className="form-label">Copy of National ID (Front)</label>
+              <input
+                className="form-control form-control-lg"
+                type="file"
+                id="formFileLg"
+                name="ID_front"
+                onChange={(e) => setID_front(e.target.files[0])}
+              />
+            </div>
+            <div>
+              <label className="form-label">Copy of National ID (Back)</label>
+              <input
+                className="form-control form-control-lg"
+                type="file"
+                id="formFileLg"
+                name="ID_back"
+                onChange={(e) => setID_back(e.target.files[0])}
+              />
             </div>
           </div>
 
           <br></br>
           <br></br>
-          <div className="input-box address">
-            <label>Referee</label>
-            <div className="column">
-              <div>
-                <input 
-                  type="text" 
-                  placeholder="First Name" 
-                  name="RefFirstName"
-                  onChange={handleInput}
-                  required 
+          <label>
+              <b>Personal Referee</b>
+            </label>
+          <div className="column">
+            <div className="input-box">  
+            <input
+                  type="text"
+                  placeholder="First Name"
+                  name="PersonalRefFirstName"
+                  onChange={(e) => setPersonalRefFirstName(e.target.value)}
+                  required
                 />
-              </div>
-              <div>
-                <label for="formFileLg" className="form-label">
-                  {" "}
-                </label>
-                <input 
-                  type="text" 
-                  placeholder="Last Name" 
-                  name="RefSecondName"
-                  onChange={handleInput}
-                  required 
-                />
-              </div>
             </div>
+            <div className="input-box">
+            <input
+                  type="text"
+                  placeholder="Last Name"
+                  name="PersonalRefSecondName"
+                  onChange={(e) => setPersonalRefSecondName(e.target.value)}
+                  required
+                />
+            </div>
+          </div>
+
+          <div className="input-box address">
             <div className="column">
-              <input 
-                type="text" 
-                placeholder="Phone Number" 
-                name="RefPhoneNumber"
-                onChange={handleInput}
-                required 
+              <input
+                type="text"
+                placeholder="Phone Number"
+                name="PersonalRefPhoneNumber"
+                onChange={(e) => setPersonalRefPhoneNumber(e.target.value)}
+                required
               />
-              <input 
-                type="text" 
-                placeholder="Relationship" 
-                name="RefRelationship"
-                onChange={handleInput}
-                required 
+              <input
+                type="text"
+                placeholder="Relationship"
+                name="PersonalRefRelationship"
+                onChange={(e) => setPersonalRefRelationship(e.target.value)}
+                required
               />
+            </div>
+          </div>
+          <br>
+          </br>
+
+          <label>
+              <b>Ministry Referee</b>
+            </label>
+          <div className="column">
+            <div className="input-box">  
+              <input
+                  type="text"
+                  placeholder="First Name"
+                  name="MinistryRefFirstName"
+                  onChange={(e) => setMinistryRefFirstName(e.target.value)}
+                  required
+                />
+            </div>
+            <div className="input-box">
+              <input
+                  type="text"
+                  placeholder="Last Name"
+                  name="MinistryRefSecondName"
+                  onChange={(e) => setMinistryRefSecondName(e.target.value)}
+                  required
+                />
             </div>
           </div>
           <div className="input-box address">
             <div className="column">
-              <div class="form-group">
-                <label for="exampleFormControlTextarea1">Additional Message</label>
-                <textarea 
-                className="form-control" 
-                id="exampleFormControlTextarea1" 
-                rows="3"
-                name="message"
-                onChange={handleInput}
-                ></textarea>
-              </div>
+              <input
+                type="text"
+                placeholder="Phone Number"
+                name="MinistryRefPhoneNumber"
+                onChange={(e) => setMinistryRefPhoneNumber(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                placeholder="Relationship"
+                name="MinistryRefRelationship"
+                onChange={(e) => setMinistryRefRelationship(e.target.value)}
+                required
+              />
             </div>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" onClick={handleShow}>
+            Submit
+          </button>
         </form>
+       {/* Modal */}
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Application Status</Modal.Title>
+        </Modal.Header>
+        {isApplicationSuccessful ? (
+          <Modal.Body>
+            <p style={{ color: "green" }}>
+              Thank you {FormData.FullName}! Your application has been received.
+            </p>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button
+                variant="primary"
+                href="https://karencommunitychurch.org/"
+                onClick={handleClose}
+              >
+                Visit Website
+              </Button>
+            </Modal.Footer>
+          </Modal.Body>
+        ) : (
+          <Modal.Body>
+            <p style={{ color: "red" }}>
+              Sorry, there was an error submitting your application. Please try again.
+            </p>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal.Body>
+        )}
+      </Modal>
+
+        {/* Error Modal */}
+        <Modal show={error !== ""} onHide={() => setError("")} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Error Submitting your Application</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p style={{ color: "red" }}>{error}</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setError("")}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </section>
+    </>
   );
 }
 
 export default ApplicationForm;
-
