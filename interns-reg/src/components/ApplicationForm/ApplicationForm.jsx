@@ -109,52 +109,48 @@ function ApplicationForm() {
     formData.append("MinistryRefPhoneNumber", MinistryRefPhoneNumber);
     formData.append("MinistryRefRelationship", MinistryRefRelationship);
 
-    const requestOptions={
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-    },
-
-      body: JSON.stringify(formData),
-    }
+    const requestOptions = {
+      method: "POST",
+      body: formData
+    };
 
     event.preventDefault();
 
     // console.log(formData);
 
     await fetch("http://localhost:8000/api/applicants", requestOptions)
-      .then((response) => {
-        // Handle the response from the server
-        if (response.ok) {
-          console.log("response", response);
-          return response.json();
-        } else if (response.status === 409) {
-          throw new Error("Applicant already exists");
-        } else if (response.status === 406) {
-          throw new Error("Only PDF or Word documents are allowed.");
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((data) => {
-        setApplicationSuccess(true);
-      })
-      .catch((error) => {
-        setApplicationSuccess(false);
-        setError(error.message);
-        console.error(error);
-      });
+    .then((response) => {
+      // Handle the response from the server
+      if (response.ok) {
+        console.log("response", response);
+        return response.json();
+      } else if (response.status === 409) {
+        throw new Error('Applicant already exists');
+      }else if (response.status === 406) {
+        throw new Error('Only PDF or Word documents are allowed.');
+      }else {
+        throw new Error(response.statusText);
+      }
+    })
+    .then((data) => {
+      setApplicationSuccess(true);
+    })
+    .catch((error) => {
+      setApplicationSuccess(false);
+      setError(error.message);
+      console.error(error);
+    });
   }
 
   return (
     <>
-      <section className="container">
+      <section className="container" style={{marginTop: "310vh",}}>
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "35vh",
+            height: "25vh",
           }}
         >
           <img src="images/kcclogo.png" />
