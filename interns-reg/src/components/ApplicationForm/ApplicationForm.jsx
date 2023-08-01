@@ -458,7 +458,7 @@ function ApplicationForm() {
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
-                  value="1"
+                  value="Very Weak"
                   onChange={(e) => setprayerForm(e.target.value)}
                 />
                 <label>1</label>
@@ -469,7 +469,7 @@ function ApplicationForm() {
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
-                  value="2"
+                  value="Weak"
                   onChange={(e) => setprayerForm(e.target.value)}
                 />
                 <label>2</label>
@@ -480,7 +480,7 @@ function ApplicationForm() {
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
-                  value="3"
+                  value="Moderate"
                   onChange={(e) => setprayerForm(e.target.value)}
                 />
                 <label>3</label>
@@ -491,7 +491,7 @@ function ApplicationForm() {
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
-                  value="4"
+                  value="Strong"
                   onChange={(e) => setprayerForm(e.target.value)}
                 />
                 <label>4</label>
@@ -502,7 +502,7 @@ function ApplicationForm() {
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
-                  value="5"
+                  value="Very Strong"
                   onChange={(e) => setprayerForm(e.target.value)}
                 />
                 <label>5</label>
@@ -518,7 +518,7 @@ function ApplicationForm() {
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
-                  value="1"
+                  value="Very Weak"
                   onChange={(e) => setfastingForm(e.target.value)}
                 />
                 <label>1</label>
@@ -529,7 +529,7 @@ function ApplicationForm() {
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
-                  value="2"
+                  value="Weak"
                   onChange={(e) => setfastingForm(e.target.value)}
                 />
                 <label>2</label>
@@ -540,7 +540,7 @@ function ApplicationForm() {
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
-                  value="3"
+                  value="Moderate"
                   onChange={(e) => setfastingForm(e.target.value)}
                 />
                 <label>3</label>
@@ -551,7 +551,7 @@ function ApplicationForm() {
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
-                  value="4"
+                  value="Strong"
                   onChange={(e) => setfastingForm(e.target.value)}
                 />
                 <label>4</label>
@@ -562,7 +562,7 @@ function ApplicationForm() {
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
-                  value="5"
+                  value="Very Strong"
                   onChange={(e) => setfastingForm(e.target.value)}
                 />
                 <label>5</label>
@@ -580,7 +580,7 @@ function ApplicationForm() {
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
-                  value="1"
+                  value="Very Weak"
                   onChange={(e) => setwitnessingForm(e.target.value)}
                 />
                 <label>1</label>
@@ -591,7 +591,7 @@ function ApplicationForm() {
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
-                  value="2"
+                  value="Weak"
                   onChange={(e) => setwitnessingForm(e.target.value)}
                 />
                 <label>2</label>
@@ -602,7 +602,7 @@ function ApplicationForm() {
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
-                  value="3"
+                  value="Moderate"
                   onChange={(e) => setwitnessingForm(e.target.value)}
                 />
                 <label>3</label>
@@ -613,7 +613,7 @@ function ApplicationForm() {
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
-                  value="4"
+                  value="Strong"
                   onChange={(e) => setwitnessingForm(e.target.value)}
                 />
                 <label>4</label>
@@ -624,7 +624,7 @@ function ApplicationForm() {
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
-                  value="5"
+                  value="Very Strong"
                   onChange={(e) => setwitnessingForm(e.target.value)}
                 />
                 <label>5</label>
@@ -640,7 +640,7 @@ function ApplicationForm() {
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
-                  value="1"
+                  value="Very Weak"
                   onChange={(e) => setbibleReadingForm(e.target.value)}
                 />
                 <label>1</label>
@@ -651,7 +651,7 @@ function ApplicationForm() {
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
-                  value="2"
+                  value="Weak"
                   onChange={(e) => setbibleReadingForm(e.target.value)}
                 />
                 <label>2</label>
@@ -662,7 +662,7 @@ function ApplicationForm() {
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
-                  value="3"
+                  value="Moderate"
                   onChange={(e) => setbibleReadingForm(e.target.value)}
                 />
                 <label>3</label>
@@ -673,7 +673,7 @@ function ApplicationForm() {
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
-                  value="4"
+                  value="Strong"
                   onChange={(e) => setbibleReadingForm(e.target.value)}
                 />
                 <label>4</label>
@@ -684,7 +684,7 @@ function ApplicationForm() {
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
-                  value="5"
+                  value="Very Strong"
                   onChange={(e) => setbibleReadingForm(e.target.value)}
                 />
                 <label>5</label>
@@ -704,7 +704,7 @@ function ApplicationForm() {
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
-                    value="1"
+                    value="Very Weak"
                     onChange={(e) => setcharityForm(e.target.value)}
                   />
                   <label>1</label>
@@ -715,7 +715,7 @@ function ApplicationForm() {
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
-                    value="2"
+                    value="Weak"
                     onChange={(e) => setcharityForm(e.target.value)}
                   />
                   <label>2</label>
@@ -726,7 +726,7 @@ function ApplicationForm() {
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
-                    value="3"
+                    value="Moderate"
                     onChange={(e) => setcharityForm(e.target.value)}
                   />
                   <label>3</label>
@@ -737,7 +737,7 @@ function ApplicationForm() {
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
-                    value="4"
+                    value="Strong"
                     onChange={(e) => setcharityForm(e.target.value)}
                   />
                   <label>4</label>
@@ -748,7 +748,7 @@ function ApplicationForm() {
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
-                    value="5"
+                    value="Very Strong"
                     onChange={(e) => setcharityForm(e.target.value)}
                   />
                   <label>5</label>
