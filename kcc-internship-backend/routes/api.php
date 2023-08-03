@@ -25,3 +25,5 @@ Route::post('/applicants', [KccApplicationController::class, 'Application']);
 Route::get('/getapplicants', [KccApplicationController::class, 'Application']);
 
 Route::post('/register', [UsersController::class, 'register']);
+
+Route::post('/login', [UsersController::class, 'login']);

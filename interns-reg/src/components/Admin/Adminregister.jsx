@@ -10,6 +10,7 @@ const Register = () => {
   const [repeat_password, setrepeat_password] = useState("");
 
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   async function handleSubmit(event) {
 
@@ -26,17 +27,17 @@ const Register = () => {
       };
       event.preventDefault();
 
-      console.log(formData);
-
     await fetch("http://localhost:8000/api/register", requestOptions)
     .then((response) => {
       // Handle the response from the server
       if (response.ok) {
         console.log("Registration Successful!");
-          navigate("/admin");
-          return response.json();
+        navigate("/login");
+        return response.json();
       }else if(response.status === 410){
-        throw new Error('User already exists');
+        return response.json().then((data) => {
+            setError(data.error); // Assuming the error message is returned as "error" property
+          });
       } else {
         throw new Error(response.statusText);
       }
@@ -49,6 +50,11 @@ const Register = () => {
   
   return (
     <>
+     {error && (
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
+      )}
       <div className="container h-100" style={Bg}>
         <div className="d-flex justify-content-center h-100">
           <div className="user_card">
@@ -128,9 +134,9 @@ const Register = () => {
             </div>
 
             <div className="mt-4">
-              <div className="d-flex justify-content-center links">
+              <div className="d-flex justify-content-center links" >
                 Already have an account?{" "}
-                <Link to="/admin">
+                <Link to="/login" style={{color: "white"}}>
                     Login
                   </Link>
               </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UsersController extends Controller
 {
@@ -31,5 +32,26 @@ class UsersController extends Controller
         $user = User::all();
 
         return $user;
+    }
+
+    public function login(Request $request)
+    {
+        // Validate user input
+        $request->validate([
+            'username' => 'required|string',
+            'password' => 'required|string',
+        ]);
+    
+        // Attempt to authenticate user
+        $credentials = $request->only('username', 'password');
+        if (!Auth::attempt($credentials)) {
+            return response()->json(['message' => 'Invalid credentials'], 412);
+        }
+    
+        // Generate JWT token for authenticated user
+        $user = Auth::user();
+        $token = $user->createToken('auth_token')->accessToken;
+    
+        return response()->json(['token' => $token], 200);
     }
 }
