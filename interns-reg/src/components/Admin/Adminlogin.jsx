@@ -1,9 +1,13 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 const Login = () => {
+
+  const Bg = { background: 'url(images/kccbg.jpg)' };
+  
   return (
     <>
-      <div class="container h-100">
+      <div class="container h-100" style={Bg}>
         <div class="d-flex justify-content-center h-100">
           <div class="user_card">
             <div class="d-flex justify-content-center">
@@ -67,9 +71,9 @@ const Login = () => {
             <div class="mt-4">
               <div class="d-flex justify-content-center links">
                 Don't have an account?{" "}
-                <a href="#" class="ml-2">
-                  Sign Up
-                </a>
+                <Link to="/register">
+                    Sign Up
+                  </Link>
               </div>
               <div class="d-flex justify-content-center links">
                 <a href="#">Forgot your password?</a>

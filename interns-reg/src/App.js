@@ -5,6 +5,7 @@ import ApplicationForm from './components/ApplicationForm/ApplicationForm'
 import Dashboard from './components/Admin/Dashboard'
 import Login from "./components/Admin/Adminlogin";
 import { BrowserRouter as Router, Switch, Route, Routes } from 'react-router-dom';
+import Register from "./components/Admin/Adminregister";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<ApplicationForm />} />
         <Route exact path="/admin" element={<Login />} />
+        <Route exact path="/register" element={<Register />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
       </Routes>
       
