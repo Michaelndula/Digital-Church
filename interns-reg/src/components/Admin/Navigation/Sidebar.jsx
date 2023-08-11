@@ -4,10 +4,23 @@ const Sidebar = () => {
     const [style, setStyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion");
 
     const changeStyle = () => {
-        // Your changeStyle function
+        if (style == "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
+        {
+            setStyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled");
+        }
+        else{
+            setStyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
+        }
     };
-
-    // Rest of the sidebar content
+    const changeStyle1 = () => {
+        if (style == "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
+        {
+            setStyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled1");
+        }
+        else{
+            setStyle("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion")
+        }
+    };
 
     return (
         <ul className={style} id="accordionSidebar">
