@@ -1,5 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Modal, Button } from "react-bootstrap";
 
 const Login = () => {
 
@@ -9,7 +11,22 @@ const Login = () => {
   const [password, setpassword] = useState("");
 
   const navigate = useNavigate();
+
+  const [isLoginSuccessful, setLoginSuccess] = useState(false);
   const [error, setError] = useState("");
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false);
+    if (isLoginSuccessful) {
+      window.location.reload();
+    } else {
+      
+    }
+  };
+
+  const handleShow = () => setShow(true);
 
   async function handleSubmit(event) {
 
@@ -24,23 +41,29 @@ const Login = () => {
       };
       event.preventDefault();
 
-      try {
-        const response = await fetch("http://localhost:8000/api/login", requestOptions);
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data.token);
-          localStorage.setItem("jwtToken", data.token);
-          navigate("/dashboard");
-        } else if (response.status === 412) {
-          const data = await response.json();
-          setError(data.error);
-        } else {
-          throw new Error(response.statusText);
+        try {
+          const response = await fetch("http://localhost:8000/api/login", requestOptions);
+          
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data.token);
+            localStorage.setItem("jwtToken", data.token);
+            navigate("/dashboard");
+            setLoginSuccess(true);
+          } else if (response.status === 412) {
+            const data = await response.json();
+            setError(data.error);
+            setLoginSuccess(false);
+          } else {
+            throw new Error(response.statusText);
+          }
+        } catch (error) {
+            setLoginSuccess(false);
+            setError("Sorry, an error occurred. Please try again.");
+            console.error("Login Error:", error);
         }
-      } catch (error) {
-        console.error("Login Error:", error);
-      }
 }
+
 
   return (
     <>
@@ -105,6 +128,58 @@ const Login = () => {
                   </button>
                 </div>
               </form>
+              
+      {/* Modal */}
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Login Status</Modal.Title>
+        </Modal.Header>
+        {isLoginSuccessful ? (
+          <Modal.Body>
+            <p style={{ color: "green" }}>
+              Thank you user {FormData.username}! has been created.
+            </p>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button
+                variant="primary"
+                href="{{dashboard}}"
+                onClick={handleClose}
+              >
+                Visit Website
+              </Button>
+            </Modal.Footer>
+          </Modal.Body>
+        ) : (
+          <Modal.Body>
+            <p style={{ color: "red" }}>
+              Sorry, Error login. Please try again.
+            </p>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal.Body>
+        )}
+      </Modal>
+
+        {/* Error Modal */}
+        <Modal show={error !== ""} onHide={() => setError("")} centered>
+  <Modal.Header closeButton>
+    <Modal.Title>Error Login, try again</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <p style={{ color: "red" }}>{error}</p>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={() => setError("")}>
+      Close
+    </Button>
+  </Modal.Footer>
+</Modal>
             </div>
 
             <div class="mt-4">
