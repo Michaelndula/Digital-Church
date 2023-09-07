@@ -1,55 +1,45 @@
-import React, {useState} from 'react';
-//import React, { Fragment } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Dashboard.css';
-import Sidebar from './Navigation/Sidebar';
-import Navbar from './Navigation/Navbar';
-import ApplicationForm from '../ApplicationForm/ApplicationForm';
-// import {Button, Table} from 'react';
-
-function Dashboard() {
-
-    // const [currentPage, setCurrentPage] = useState(1)
-    // const recordsPerPage = 3;
-    // const lastIndex = currentPage * recordsPerPage;
-    // const firstIndex = lastIndex - recordsPerPage;
-    // const records = FormData.slice(firstIndex,lastIndex);
-    // const npage = Math.ceil(FormData.length / recordsPerPage)
-    // const numbers = [...Array(npage + 1).keys()].slice(1)
-    
-    return (
-        <div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css">
+    <title>Admin</title>
+</head>
+<body>
+<div>
             <body id="page-top">
 
-                {/*  <!-- Page Wrapper --> */}
+                  <!-- Page Wrapper --> 
                 <div id="wrapper">
 
-                    {/*  <!-- Sidebar --> */}
+                      <!-- Sidebar --> 
                     <Sidebar /> 
-                    {/*  <!-- End of Sidebar --> */}
+                      <!-- End of Sidebar --> 
 
-                    {/*  <!-- Content Wrapper --> */}
+                      <!-- Content Wrapper --> 
                     <div id="content-wrapper" className="d-flex flex-column">
 
-                        {/*  <!-- Main Content --> */}
+                          <!-- Main Content --> 
                         <div id="content">
 
-                            {/*  <!-- Topbar --> */}
-                            <Navbar />  
-                            {/*  <!-- End of Topbar --> */}
+                              <!-- Topbar --> 
 
-                            {/* <!-- Begin Page Content --> */}
+                            @include('Admin.Navigation.navbar');  
+                              <!-- End of Topbar --> 
+
+                             <!-- Begin Page Content --> 
                             <div className="container-fluid">
 
-                                {/*  <!-- Page Heading --> */}
+                                  <!-- Page Heading --> 
                                 <div className="d-sm-flex align-items-center justify-content-between mb-4">
                                     <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
                                 </div>
 
-                                {/*  <!-- Content Row --> */}
+                                  <!-- Content Row --> 
                                 <div className="row">
 
-                                    {/*  <!-- Show total applications --> */}
+                                      <!-- Show total applications --> 
                                     <div className="col-xl-3 col-md-6 mb-4">
                                         <div className="card border-left-primary shadow h-100 py-2">
                                             <div className="card-body">
@@ -67,7 +57,7 @@ function Dashboard() {
                                         </div>
                                     </div>
 
-                                    {/*  <!-- Number of current interns --> */}
+                                      <!-- Number of current interns --> 
                                     <div className="col-xl-3 col-md-6 mb-4">
                                         <div className="card border-left-success shadow h-100 py-2">
                                             <div className="card-body">
@@ -85,7 +75,7 @@ function Dashboard() {
                                         </div>
                                     </div>
 
-                                    {/*  <!-- Show pending appication requests --> */}
+                                      <!-- Show pending appication requests --> 
                                     <div className="col-xl-3 col-md-6 mb-4">
                                         <div className="card border-left-info shadow h-100 py-2">
                                             <div className="card-body">
@@ -103,7 +93,7 @@ function Dashboard() {
                                         </div>
                                     </div>
 
-                                     {/*  <!-- Show number of all users --> */}
+                                       <!-- Show number of all users --> 
                                      <div className="col-xl-3 col-md-6 mb-4">
                                         <div className="card border-left-warning shadow h-100 py-2">
                                             <div className="card-body">
@@ -122,11 +112,11 @@ function Dashboard() {
                                     </div>
                                 </div>
 
-                                {/*  <!-- Content Row --> */}
-                                    {/*   <!-- Show all applications--> */}
+                                  <!-- Content Row --> 
+                                       <!-- Show all applications--> 
                                     <div className="col-xl-12 col-lg-7">
                                         <div className="card shadow mb-4">
-                                            {/*  <!-- Card Header - Dropdown --> */}
+                                              <!-- Card Header - Dropdown --> 
                                             <div
                                                 className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                                 <h6 className="m-0 font-weight-bold text-primary">Applications</h6>
@@ -145,10 +135,10 @@ function Dashboard() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/*  <!-- Card Body --> */}
+                                              <!-- Card Body --> 
                                             <div className="card-body">
-                                                {/* <div className="chart-area"> */}
-                                                    {/* <canvas id="myAreaChart"></canvas>  */}
+                                                 <div className="chart-area"> 
+                                                     <canvas id="myAreaChart"></canvas>  
                                                     <table class="table table-hover mx-1">
                                                         <thead>
                                                             <tr>
@@ -215,19 +205,19 @@ function Dashboard() {
 
 
                                                     
-                                                {/* </div> */}
+                                                 </div> 
                                                 
                                             </div>
                                         </div>
                                     </div>
 
                             </div>
-                            {/*   <!-- /.container-fluid --> */}
+                               <!-- /.container-fluid --> 
 
                         </div>
-                        {/*   <!-- End of Main Content -->
+                           <!-- End of Main Content -->
 
-                                        <!-- Footer --> */}
+                                        <!-- Footer --> 
                         <footer className="sticky-footer bg-white">
                             <div className="container my-auto">
                                 <div className="copyright text-center my-auto">
@@ -235,20 +225,20 @@ function Dashboard() {
                                 </div>
                             </div>
                         </footer>
-                        {/* <!-- End of Footer --> */}
+                         <!-- End of Footer --> 
 
                     </div>
-                    {/*  <!-- End of Content Wrapper --> */}
+                      <!-- End of Content Wrapper --> 
 
                 </div>
-                {/*  <!-- End of Page Wrapper -->
+                  <!-- End of Page Wrapper -->
 
-                                <!-- Scroll to Top Button--> */}
+                                <!-- Scroll to Top Button--> 
                 <a className="scroll-to-top rounded" href="#page-top">
                     <i className="fas fa-angle-up"></i>
                 </a>
 
-                {/*  <!-- Logout Modal--> */}
+                  <!-- Logout Modal--> 
                 <div className="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div className="modal-dialog" role="document">
@@ -269,8 +259,6 @@ function Dashboard() {
                 </div>
 
             </body>
-        </div>
-    )
-}
-
-export default Dashboard;
+        </div> 
+</body>
+</html>
