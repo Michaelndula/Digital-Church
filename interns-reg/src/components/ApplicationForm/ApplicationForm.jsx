@@ -147,7 +147,7 @@ function ApplicationForm() {
 
   return (
     <>
-      <section className="container" style={{marginTop: "310vh",}}>
+      <section className="container" >
         <div
           style={{
             display: "flex",
@@ -171,7 +171,7 @@ function ApplicationForm() {
               required
             />
           </div>
-          <div className="column">
+          <div className="column" style={{marginTop:"2%"}}>
             <div className="input-box">
               <label>Email Address</label>
               <input
@@ -194,7 +194,7 @@ function ApplicationForm() {
             </div>
           </div>
           <div className="column" style={{ marginTop: "2%" }}>
-            <div className="col-md-6" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className="input-box " style={{ display: 'flex', flexDirection: 'column' }}>
               <label>Birth Date</label>
               <input
                 type="date"
@@ -205,7 +205,7 @@ function ApplicationForm() {
                 required
               />
             </div>
-            <div className="col-md-6">
+            <div className="input-box col-md-6">
               <label>Gender</label>
               <div className="gender-option">
                 <div className="form-check form-check-inline">
@@ -279,13 +279,13 @@ function ApplicationForm() {
           </div>
           
           <div className="column">
-            <div className="input-box" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div  className="input-box" style={{ display: 'flex', flexDirection: 'column' }}>
               <label>Relationship Status</label>
-              <select  onChange={(e) => setrelationshipStatus(e.target.value)}>
-                <option value="option1">Single</option>
-                <option value="option2">Married</option>
-                <option value="option3">Engaged</option>
-              </select>
+              <select className="status" onChange={(e) => setrelationshipStatus(e.target.value)}>
+                <option value="Single">Single</option>
+                <option value="Enganged">Engaged</option>
+                <option value="Married">Married</option>
+              </select>  
             </div>
             <div className="input-box">
             <label>Hobbies</label>
@@ -447,17 +447,18 @@ function ApplicationForm() {
               you doing in the following spiritual disciplines:
             </label>
             <div className="column" style={{marginTop :"2%"}}>
-            <div className="col-md-6">
-              <label style={{marginRight :"2%"}}>
+            <div className="col-md-6" style={{ display: 'flex', flexDirection: 'column' }}>
+              <label>
                 <b>Prayer</b>
               </label>
+              <div className="choice">
               <div className="form-check form-check-inline">
                 <input
                   className="form-check-input"
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
-                  value="1"
+                  value="Very Weak"
                   onChange={(e) => setprayerForm(e.target.value)}
                 />
                 <label>1</label>
@@ -468,7 +469,7 @@ function ApplicationForm() {
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
-                  value="2"
+                  value="Weak"
                   onChange={(e) => setprayerForm(e.target.value)}
                 />
                 <label>2</label>
@@ -479,7 +480,7 @@ function ApplicationForm() {
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
-                  value="3"
+                  value="Moderate"
                   onChange={(e) => setprayerForm(e.target.value)}
                 />
                 <label>3</label>
@@ -490,7 +491,7 @@ function ApplicationForm() {
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
-                  value="4"
+                  value="Strong"
                   onChange={(e) => setprayerForm(e.target.value)}
                 />
                 <label>4</label>
@@ -501,23 +502,25 @@ function ApplicationForm() {
                   type="radio"
                   name="prayerForm"
                   id="inlineRadio1"
-                  value="5"
+                  value="Very Strong"
                   onChange={(e) => setprayerForm(e.target.value)}
                 />
                 <label>5</label>
               </div>
             </div>
-            <div className="col-md-8">
-            <label style={{marginRight :"2%"}}>
+              </div>
+            <div className="col-md-6" style={{ display: 'flex', flexDirection: 'column' }}>
+              <label>
                 <b>Fasting</b>
               </label>
+              <div className="choice">
               <div className="form-check form-check-inline">
                 <input
                   className="form-check-input"
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
-                  value="1"
+                  value="Very Weak"
                   onChange={(e) => setfastingForm(e.target.value)}
                 />
                 <label>1</label>
@@ -528,7 +531,7 @@ function ApplicationForm() {
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
-                  value="2"
+                  value="Weak"
                   onChange={(e) => setfastingForm(e.target.value)}
                 />
                 <label>2</label>
@@ -539,7 +542,7 @@ function ApplicationForm() {
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
-                  value="3"
+                  value="Moderate"
                   onChange={(e) => setfastingForm(e.target.value)}
                 />
                 <label>3</label>
@@ -550,7 +553,7 @@ function ApplicationForm() {
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
-                  value="4"
+                  value="Strong"
                   onChange={(e) => setfastingForm(e.target.value)}
                 />
                 <label>4</label>
@@ -561,25 +564,27 @@ function ApplicationForm() {
                   type="radio"
                   name="fastingForm"
                   id="inlineRadio1"
-                  value="5"
+                  value="Very Strong"
                   onChange={(e) => setfastingForm(e.target.value)}
                 />
                 <label>5</label>
+              </div>
               </div>
             </div> 
             </div>
-            <div className="column" style={{marginTop :"1%"}}>
-            <div className="col-md-6">
+            <div className="column" style={{marginTop :"2%"}}>
+            <div className="col-md-6" style={{ display: 'flex', flexDirection: 'column' }}>
               <label style={{marginRight :"2%"}}>
                 <b>Witnessing</b>
               </label>
+              <div className="choice">
               <div className="form-check form-check-inline">
                 <input
                   className="form-check-input"
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
-                  value="1"
+                  value="Very Weak"
                   onChange={(e) => setwitnessingForm(e.target.value)}
                 />
                 <label>1</label>
@@ -590,7 +595,7 @@ function ApplicationForm() {
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
-                  value="2"
+                  value="Weak"
                   onChange={(e) => setwitnessingForm(e.target.value)}
                 />
                 <label>2</label>
@@ -601,7 +606,7 @@ function ApplicationForm() {
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
-                  value="3"
+                  value="Moderate"
                   onChange={(e) => setwitnessingForm(e.target.value)}
                 />
                 <label>3</label>
@@ -612,7 +617,7 @@ function ApplicationForm() {
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
-                  value="4"
+                  value="Strong"
                   onChange={(e) => setwitnessingForm(e.target.value)}
                 />
                 <label>4</label>
@@ -623,23 +628,25 @@ function ApplicationForm() {
                   type="radio"
                   name="witnessingForm"
                   id="inlineRadio1"
-                  value="5"
+                  value="Very Strong"
                   onChange={(e) => setwitnessingForm(e.target.value)}
                 />
                 <label>5</label>
               </div>
+              </div>
             </div>
-            <div className="col-md-8">
-              <label style={{marginRight :"2%"}}>
+            <div className="col-md-6" style={{display: 'flex', flexDirection: 'column'}}>
+              <label style={{alignItems: 'center'}}>
                 <b>Reading your Bible</b>
               </label>
+              <div className="choice">
               <div className="form-check form-check-inline">
                 <input
                   className="form-check-input"
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
-                  value="1"
+                  value="Very Weak"
                   onChange={(e) => setbibleReadingForm(e.target.value)}
                 />
                 <label>1</label>
@@ -650,7 +657,7 @@ function ApplicationForm() {
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
-                  value="2"
+                  value="Weak"
                   onChange={(e) => setbibleReadingForm(e.target.value)}
                 />
                 <label>2</label>
@@ -661,7 +668,7 @@ function ApplicationForm() {
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
-                  value="3"
+                  value="Moderate"
                   onChange={(e) => setbibleReadingForm(e.target.value)}
                 />
                 <label>3</label>
@@ -672,7 +679,7 @@ function ApplicationForm() {
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
-                  value="4"
+                  value="Strong"
                   onChange={(e) => setbibleReadingForm(e.target.value)}
                 />
                 <label>4</label>
@@ -683,27 +690,26 @@ function ApplicationForm() {
                   type="radio"
                   name="bibleReadingForm"
                   id="inlineRadio1"
-                  value="5"
+                  value="Very Strong"
                   onChange={(e) => setbibleReadingForm(e.target.value)}
                 />
                 <label>5</label>
               </div>
+              </div>
             </div>
-
             </div>
-            <div className="column" style={{marginTop :"1%"}}>
+            <div className="col-md-6" style={{display: 'flex', flexDirection: 'column'}}>
               <label>
                   <b>Caring For the Vulnerable</b>
-                </label>
-              <div className="col-md-8">
-               
-                <div className="form-check form-check-inline">
+              </label>
+              <div className="choice">
+              <div className="form-check form-check-inline">
                   <input
                     className="form-check-input"
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
-                    value="1"
+                    value="Very Weak"
                     onChange={(e) => setcharityForm(e.target.value)}
                   />
                   <label>1</label>
@@ -714,7 +720,7 @@ function ApplicationForm() {
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
-                    value="2"
+                    value="Weak"
                     onChange={(e) => setcharityForm(e.target.value)}
                   />
                   <label>2</label>
@@ -725,7 +731,7 @@ function ApplicationForm() {
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
-                    value="3"
+                    value="Moderate"
                     onChange={(e) => setcharityForm(e.target.value)}
                   />
                   <label>3</label>
@@ -736,7 +742,7 @@ function ApplicationForm() {
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
-                    value="4"
+                    value="Strong"
                     onChange={(e) => setcharityForm(e.target.value)}
                   />
                   <label>4</label>
@@ -747,18 +753,14 @@ function ApplicationForm() {
                     type="radio"
                     name="charityForm"
                     id="inlineRadio1"
-                    value="5"
+                    value="Very Strong"
                     onChange={(e) => setcharityForm(e.target.value)}
                   />
                   <label>5</label>
                 </div>
-                <div className="col-md-4">
-                  
-                </div>
+              </div>            
             </div>
-             
             </div>
-          </div>
           <br></br>
           <br></br>
           <div className="input-box address">

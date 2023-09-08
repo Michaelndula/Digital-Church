@@ -123,14 +123,14 @@ const Login = () => {
                   </div>
                 </div>
                 <div class="d-flex justify-content-center mt-3 login_container">
-                  <button type="submit" name="button" class="btn login_btn">
+                  <button type="submit" onClick={handleShow} name="button" class="btn login_btn">
                     Login
                   </button>
                 </div>
               </form>
-              
-      {/* Modal */}
-      <Modal show={show} onHide={handleClose} centered>
+
+              {/* Modal */}
+ <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Login Status</Modal.Title>
         </Modal.Header>
