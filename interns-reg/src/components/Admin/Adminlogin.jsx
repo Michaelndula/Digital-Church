@@ -1,10 +1,16 @@
 import { React, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Modal, Button } from "react-bootstrap";
 
 const Login = () => {
+
+  const Bg = { background: 'url(images/kccbg.jpg)' };
+
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
+
+  const navigate = useNavigate();
 
   const [isLoginSuccessful, setLoginSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -22,46 +28,46 @@ const Login = () => {
 
   const handleShow = () => setShow(true);
 
-async function handleSubmit(event) {
+  async function handleSubmit(event) {
 
-  const formData = new FormData();
+    const formData = new FormData();
 
-  formData.append("username", username);
-  formData.append("password", password);
+    formData.append("username", username);
+    formData.append("password", password);
 
-  const requestOptions = {
-    method: "POST",
-    body: formData
-  };
+    const requestOptions = {
+        method: "POST",
+        body: formData
+      };
+      event.preventDefault();
 
-  event.preventDefault();
-
-  console.log(formData);
-
-  await fetch("http://127.0.0.1:8000/api/login", requestOptions)
-  .then((response) => {
-    // Handle the response from the server
-    if (response.ok) {
-      console.log("response", response);
-      return response.json();
-    }else if(response.status === 412){
-      throw new Error('Invalid credentials try again');
-    }else {
-      throw new Error(response.statusText);
-    }
-  })
-  .then((data) => {
-    setLoginSuccess(true);
-  })
-  .catch((error) => {
-    setLoginSuccess(false);
-    setError(error.message);
-    console.error(error);
-  });
+        try {
+          const response = await fetch("http://localhost:8000/api/login", requestOptions);
+          
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data.token);
+            localStorage.setItem("jwtToken", data.token);
+            navigate("/dashboard");
+            setLoginSuccess(true);
+          } else if (response.status === 412) {
+            const data = await response.json();
+            setError(data.error);
+            setLoginSuccess(false);
+          } else {
+            throw new Error(response.statusText);
+          }
+        } catch (error) {
+            setLoginSuccess(false);
+            setError("Sorry, an error occurred. Please try again.");
+            console.error("Login Error:", error);
+        }
 }
+
+
   return (
     <>
-      <div class="container h-100">
+      <div class="container h-100" style={Bg}>
         <div class="d-flex justify-content-center h-100">
           <div class="user_card">
             <div class="d-flex justify-content-center">
@@ -70,7 +76,7 @@ async function handleSubmit(event) {
               </div>
             </div>
             <div class="d-flex justify-content-center form_container">
-              <form onSubmit={handleSubmit} className="form">
+              <form onSubmit={handleSubmit}>
                 <div class="input-group mb-3">
                   <div class="input-group-append">
                     <span class="input-group-text">
@@ -122,6 +128,7 @@ async function handleSubmit(event) {
                   </button>
                 </div>
               </form>
+
               {/* Modal */}
  <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
@@ -148,7 +155,7 @@ async function handleSubmit(event) {
         ) : (
           <Modal.Body>
             <p style={{ color: "red" }}>
-              Sorry, login. Please try again.
+              Sorry, Error login. Please try again.
             </p>
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
@@ -161,29 +168,29 @@ async function handleSubmit(event) {
 
         {/* Error Modal */}
         <Modal show={error !== ""} onHide={() => setError("")} centered>
-          <Modal.Header closeButton>
-            <Modal.Title>Error Submitting your Login</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p style={{ color: "red" }}>{error}</p>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={() => setError("")}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
+  <Modal.Header closeButton>
+    <Modal.Title>Error Login, try again</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <p style={{ color: "red" }}>{error}</p>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={() => setError("")}>
+      Close
+    </Button>
+  </Modal.Footer>
+</Modal>
             </div>
 
             <div class="mt-4">
               <div class="d-flex justify-content-center links">
                 Don't have an account?{" "}
-                <a href="#" class="ml-2">
-                  Sign Up
-                </a>
+                <Link to="/register" style={{color: "white"}}>
+                    Sign Up
+                  </Link>
               </div>
               <div class="d-flex justify-content-center links">
-                <a href="#">Forgot your password?</a>
+                <a href="#" style={{color: "white"}}>Forgot your password?</a>
               </div>
             </div>
           </div>

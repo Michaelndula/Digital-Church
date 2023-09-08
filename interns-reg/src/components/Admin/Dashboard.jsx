@@ -1,69 +1,276 @@
-import React, { useRef, useState } from "react";
+import React, {useState} from 'react';
+//import React, { Fragment } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Dashboard.css';
+import Sidebar from './Navigation/Sidebar';
+import Navbar from './Navigation/Navbar';
+import ApplicationForm from '../ApplicationForm/ApplicationForm';
+// import {Button, Table} from 'react';
 
-const Dashboard = () =>{
-    return(
-        <>
-   <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            {/* <!-- Navbar Brand--> */}
-            <a class="navbar-brand ps-3" href="">KCC</a>
-            {/* <!-- Sidebar Toggle--> */}
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            {/* <!-- Navbar Search--> */}
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+function Dashboard() {
+
+    // const [currentPage, setCurrentPage] = useState(1)
+    // const recordsPerPage = 3;
+    // const lastIndex = currentPage * recordsPerPage;
+    // const firstIndex = lastIndex - recordsPerPage;
+    // const records = FormData.slice(firstIndex,lastIndex);
+    // const npage = Math.ceil(FormData.length / recordsPerPage)
+    // const numbers = [...Array(npage + 1).keys()].slice(1)
+    
+    return (
+        <div>
+            <body id="page-top">
+
+                {/*  <!-- Page Wrapper --> */}
+                <div id="wrapper">
+
+                    {/*  <!-- Sidebar --> */}
+                    <Sidebar /> 
+                    {/*  <!-- End of Sidebar --> */}
+
+                    {/*  <!-- Content Wrapper --> */}
+                    <div id="content-wrapper" className="d-flex flex-column">
+
+                        {/*  <!-- Main Content --> */}
+                        <div id="content">
+
+                            {/*  <!-- Topbar --> */}
+                            <Navbar />  
+                            {/*  <!-- End of Topbar --> */}
+
+                            {/* <!-- Begin Page Content --> */}
+                            <div className="container-fluid">
+
+                                {/*  <!-- Page Heading --> */}
+                                <div className="d-sm-flex align-items-center justify-content-between mb-4">
+                                    <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
+                                </div>
+
+                                {/*  <!-- Content Row --> */}
+                                <div className="row">
+
+                                    {/*  <!-- Show total applications --> */}
+                                    <div className="col-xl-3 col-md-6 mb-4">
+                                        <div className="card border-left-primary shadow h-100 py-2">
+                                            <div className="card-body">
+                                                <div className="row no-gutters align-items-center">
+                                                    <div className="col mr-2">
+                                                        <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                            Total Applicactions</div>
+                                                        <div className="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                                    </div>
+                                                    <div className="col-auto">
+                                                        <i className="fas fa-calendar fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/*  <!-- Number of current interns --> */}
+                                    <div className="col-xl-3 col-md-6 mb-4">
+                                        <div className="card border-left-success shadow h-100 py-2">
+                                            <div className="card-body">
+                                                <div className="row no-gutters align-items-center">
+                                                    <div className="col mr-2">
+                                                        <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                            Current Interns</div>
+                                                        <div className="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                                                    </div>
+                                                    <div className="col-auto">
+                                                        <i className="fas fa-user fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/*  <!-- Show pending appication requests --> */}
+                                    <div className="col-xl-3 col-md-6 mb-4">
+                                        <div className="card border-left-info shadow h-100 py-2">
+                                            <div className="card-body">
+                                                <div className="row no-gutters align-items-center">
+                                                    <div className="col mr-2">
+                                                        <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                            Pending Requests</div>
+                                                        <div className="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                                    </div>
+                                                    <div className="col-auto">
+                                                        <i className="fas fa-comments fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     {/*  <!-- Show number of all users --> */}
+                                     <div className="col-xl-3 col-md-6 mb-4">
+                                        <div className="card border-left-warning shadow h-100 py-2">
+                                            <div className="card-body">
+                                                <div className="row no-gutters align-items-center">
+                                                    <div className="col mr-2">
+                                                        <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                            Users</div>
+                                                        <div className="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                                    </div>
+                                                    <div className="col-auto">
+                                                        <i className="fas fa-users fa-2x text-gray-300"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/*  <!-- Content Row --> */}
+                                    {/*   <!-- Show all applications--> */}
+                                    <div className="col-xl-12 col-lg-7">
+                                        <div className="card shadow mb-4">
+                                            {/*  <!-- Card Header - Dropdown --> */}
+                                            <div
+                                                className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                                <h6 className="m-0 font-weight-bold text-primary">Applications</h6>
+                                                <div className="dropdown no-arrow">
+                                                    <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                                    </a>
+                                                    <div className="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                                        aria-labelledby="dropdownMenuLink">
+                                                        <div className="dropdown-header">Dropdown Header:</div>
+                                                        <a className="dropdown-item" href="#">Action</a>
+                                                        <a className="dropdown-item" href="#">Another action</a>
+                                                        <div className="dropdown-divider"></div>
+                                                        <a className="dropdown-item" href="#">Something else here</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/*  <!-- Card Body --> */}
+                                            <div className="card-body">
+                                                {/* <div className="chart-area"> */}
+                                                    {/* <canvas id="myAreaChart"></canvas>  */}
+                                                    <table class="table table-hover mx-1">
+                                                        <thead>
+                                                            <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Name</th>
+                                                            <th scope="col">Phone Number</th>
+                                                            <th scope="col">Email</th>
+                                                            <th scope="col">Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                            <th scope="row">1</th>
+                                                            <td>Michael Ndula</td>
+                                                            <td>070000000</td>
+                                                            <td>mike@example.com</td>
+                                                            </tr>
+                                                            <tr>
+                                                            <th scope="row">2</th>
+                                                            <td>Michael Ndula</td>
+                                                            <td>070000000</td>
+                                                            <td>mike@example.com</td>
+                                                            </tr>
+                                                            <tr>
+                                                            <th scope="row">3</th>
+                                                            <td>Michael Ndula</td>
+                                                            <td>070000000</td>
+                                                            <td>mike@example.com</td>
+                                                            </tr>
+                                                            <tr>
+                                                            <th scope="row">4</th>
+                                                            <td>Michael Ndula</td>
+                                                            <td>070000000</td>
+                                                            <td>mike@example.com</td>
+                                                            </tr>
+                                                            <tr>
+                                                            <th scope="row">5</th>
+                                                            <td>Jacob</td>
+                                                            <td>Thornton</td>
+                                                            <td>@fat</td>
+                                                            </tr>
+                                                            <tr>
+                                                            <th scope="row">6</th>
+                                                            <td colspan="2">Larry the Bird</td>
+                                                            <td>@twitter</td>
+                                                            </tr>
+                                                            <tr>
+                                                            <th scope="row">7</th>
+                                                            <td colspan="2">Larry the Bird</td>
+                                                            <td>@twitter</td>
+                                                            </tr>
+                                                            <tr>
+                                                            <th scope="row">8</th>
+                                                            <td colspan="2">Larry the Bird</td>
+                                                            <td>@twitter</td>
+                                                            </tr>
+                                                            <tr>
+                                                            <th scope="row">9</th>
+                                                            <td colspan="2">Larry the Bird</td>
+                                                            <td>@twitter</td>
+                                                            </tr>
+                                                        </tbody>                              
+                                                    </table>
+
+
+                                                    
+                                                {/* </div> */}
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div>
+                            {/*   <!-- /.container-fluid --> */}
+
+                        </div>
+                        {/*   <!-- End of Main Content -->
+
+                                        <!-- Footer --> */}
+                        <footer className="sticky-footer bg-white">
+                            <div className="container my-auto">
+                                <div className="copyright text-center my-auto">
+                                    <span>Copyright &copy; Digital Faith Project II</span>
+                                </div>
+                            </div>
+                        </footer>
+                        {/* <!-- End of Footer --> */}
+
+                    </div>
+                    {/*  <!-- End of Content Wrapper --> */}
+
                 </div>
-            </form>
-            {/* <!-- Navbar--> */}
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-                           
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Applications
-                            </a>
-                            <a class="nav-link" href="">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Users
-                            </a>
+                {/*  <!-- End of Page Wrapper -->
+
+                                <!-- Scroll to Top Button--> */}
+                <a className="scroll-to-top rounded" href="#page-top">
+                    <i className="fas fa-angle-up"></i>
+                </a>
+
+                {/*  <!-- Logout Modal--> */}
+                <div className="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div className="modal-dialog" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                                <button className="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                            <div className="modal-footer">
+                                <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <a className="btn btn-primary" href="login.html">Logout</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        User
-                    </div>
-                </nav>
-            </div>
-            <div id="layoutSidenav_content">
-                
-            </div>
+                </div>
+
+            </body>
         </div>
-    </body>
-        </>
-    );
-};
+    )
+}
 
 export default Dashboard;

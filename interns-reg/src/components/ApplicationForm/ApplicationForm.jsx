@@ -48,10 +48,10 @@ function ApplicationForm() {
   const [MinistryRefPhoneNumber, setMinistryRefPhoneNumber] = useState("");
   const [MinistryRefRelationship, setMinistryRefRelationship] = useState("");
 
-    const [isApplicationSuccessful, setApplicationSuccess] = useState(false);
-    const [error, setError] = useState("");
+  const [isApplicationSuccessful, setApplicationSuccess] = useState(false);
+  const [error, setError] = useState("");
 
-    const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false);
 
     const handleClose = () => {
       setShow(false);
@@ -64,6 +64,7 @@ function ApplicationForm() {
     const handleShow = () => setShow(true);
 
   async function handleSubmit(event) {
+
     const formData = new FormData();
 
     formData.append("FullName", FullName);
@@ -126,6 +127,8 @@ function ApplicationForm() {
         return response.json();
       } else if (response.status === 409) {
         throw new Error('Applicant already exists');
+      }else if(response.status === 407){
+        throw new Error('Applicant with the same email already exists try another email');
       }else if (response.status === 406) {
         throw new Error('Only PDF or Word documents are allowed.');
       }else {

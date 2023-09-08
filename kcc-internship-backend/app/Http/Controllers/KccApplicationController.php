@@ -10,11 +10,17 @@ class KccApplicationController extends Controller
     function Application (Request $request){
         
         $fullName = $request->input('FullName');
+        $email = $request->input('email');
 
         $existingApplicant = Application::where('FullName', $fullName)->first();
+        $existingEmail = Application::where('email', $email)->first();
 
         if ($existingApplicant) {
             return response()->json(['message' => 'Applicant already exists'], 409);
+        }
+
+        if ($existingEmail) {
+            return response()->json(['message' => 'Applicant with the same email already exists try another email'], 407);
         }
 
         $applicant = new Application;
